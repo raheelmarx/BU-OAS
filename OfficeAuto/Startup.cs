@@ -31,6 +31,12 @@ namespace OfficeAuto
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            var dataProtectionProviderType = typeof(DataProtectorTokenProvider<ApplicationUser>);
+            var phoneNumberProviderType = typeof(PhoneNumberTokenProvider<ApplicationUser>);
+            var emailTokenProviderType = typeof(EmailTokenProvider<ApplicationUser>);
+
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -44,14 +50,13 @@ namespace OfficeAuto
             //services.AddDefaultIdentity<ApplicationUser>()
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddIdentity<ApplicationUser, IdentityRole>(
-            //    options =>
-            //{
-            //    options.Tokens.ProviderMap.Add("Default", new TokenProviderDescriptor(typeof(IUserTwoFactorTokenProvider<ApplicationUser>)));
-            //}
-            )
-       .AddEntityFrameworkStores<ApplicationDbContext>();
-            
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddTokenProvider(TokenOptions.DefaultProvider, dataProtectionProviderType)
+                .AddTokenProvider(TokenOptions.DefaultEmailProvider, emailTokenProviderType)
+                .AddTokenProvider(TokenOptions.DefaultPhoneProvider, phoneNumberProviderType);
+
+         
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<DataProtectionTokenProviderOptions>(o =>
             {
