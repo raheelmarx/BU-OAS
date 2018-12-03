@@ -1,0 +1,119 @@
+﻿@model OfficeAuto.Models.DB.Minutes
+
+@{
+    ViewData["Title"] = "Details";
+    var refdocs = (List<OfficeAuto.Models.DB.ReferenceDoc>)ViewBag.ReferenceDocs;
+    List<FileStreamResult> FileStreamResults = (List<FileStreamResult>)ViewBag.FileStreamResults;
+   
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Minutes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MinuteNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MinuteNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MinuteTitle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MinuteTitle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            <div style="overflow-y: scroll; height:400px;">
+                @Html.Raw(ViewBag.HtmlData)
+            </div>
+
+            @*@Html.DisplayFor(model => model.Description)*@
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateUpdated)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateUpdated)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+    </dl>
+    <div>
+        <table class="table-bordered">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Added By</th>
+                    <th>Date Created</th>
+                    <th>File Type</th>
+                    <th>Preview</th>
+                </tr>
+            </thead>
+            @foreach (var doc in refdocs)
+            {
+                var base64 = Convert.ToBase64String(doc.RefFile);
+                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+            <tr>
+                <td>@doc.RefTitle</td>
+                <td>@doc.AddedBy</td>
+                <td>@doc.DateCreated</td>
+                <td>@doc.ContentType</td>
+                <td><img src="@imgSrc" style="height:100px ; width:120px" /></td>@*style="height:100px , width:120px"*@
+            </tr>
+            }
+             </table>
+            </div>
+
+            @*@foreach (var doc in FileStreamResults)
+        {
+            var base64 = Convert.ToBase64String(Model.ByteArray);
+            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+            <table>
+                <thead>
+                    <tr>
+                        <th>Preview</th>
+                        <th>File Type</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>@doc.FileStream.</td>
+                    <td>@doc.ContentType</td>
+                </tr>
+            </table>
+
+        }*@
+</div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+

@@ -1,0 +1,46 @@
+﻿@model OfficeAuto.Models.DB.ReferenceDoc
+
+<h4>ReferenceDoc</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ReferenceDocument">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RefTitle" class="control-label"></label>
+                <input asp-for="RefTitle" class="form-control" />
+                <span asp-validation-for="RefTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RefFile" class="control-label"></label>
+                <input asp-for="RefFile" class="form-control" />
+                <span asp-validation-for="RefFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateCreated" class="control-label"></label>
+                <input asp-for="DateCreated" class="form-control" />
+                <span asp-validation-for="DateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MinuteId" class="control-label"></label>
+                <select asp-for="MinuteId" class ="form-control" asp-items="ViewBag.MinuteId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddedBy" class="control-label"></label>
+                <input asp-for="AddedBy" class="form-control" />
+                <span asp-validation-for="AddedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

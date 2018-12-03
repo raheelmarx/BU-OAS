@@ -1,0 +1,14 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@*﻿@model IList<Guid>*@
+
+<form action="/Minutes/ReferenceUpload" enctype="multipart/form-data" method="post">
+    <input type="file" name="files" />
+    @*<button>post</button>*@
+</form>
+
+@*@foreach (var item in Model)
+{
+    <img src="/Home/ViewImage/@item" />
+}*@

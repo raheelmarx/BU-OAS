@@ -1,0 +1,106 @@
+﻿@model OfficeAuto.Models.ViewModels.CaseViewModel
+@using OfficeAuto.Helpers;
+
+@{
+    ViewData["Title"] = "Edit";
+    var refdocs = (List<OfficeAuto.Models.DB.ReferenceDoc>)ViewBag.RefDocs;
+}
+
+<h2>Edit</h2>
+
+<h4>Case</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" id="id" value="@ViewBag.CaseId" />
+            <div class="form-group">
+                <label asp-for="CaseTitle" class="control-label"></label>
+                <input asp-for="CaseTitle" class="form-control" />
+                <span asp-validation-for="CaseTitle" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="MinuteNumber" class="control-label"></label>
+                <input asp-for="MinuteNumber" class="form-control" />
+                <span asp-validation-for="MinuteNumber" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="MinuteTitle" class="control-label"></label>
+                <input asp-for="MinuteTitle" class="form-control" />
+                <span asp-validation-for="MinuteTitle" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" asp-items="Html.GetEnumSelectList<Status>()" class="form-control" >
+                    <option selected="selected" value="">Please select</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+           
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input type="hidden" asp-for="Description" />
+                    @await Html.PartialAsync("_PartialCKEditor.cshtml")
+
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+            </div>
+            <div>
+                <table class="table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Added By</th>
+                            <th>Date Created</th>
+                            <th>File Type</th>
+                            <th>Preview</th>
+                        </tr>
+                    </thead>
+                    @foreach (var doc in refdocs)
+                    {
+                        //var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+                        <tr>
+                            <td>@doc.RefTitle</td>
+                            <td>@doc.AddedBy</td>
+                            <td>@doc.DateCreated</td>
+                            <td>@doc.ContentType</td>
+                            <td>@doc.DocPath</td>
+                            @*<td><img src="@imgSrc" style="height:100px ; width:120px" /></td>*@
+                        </tr>
+
+
+                    }
+                </table>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" onclick="GetHtml();" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        function GetHtml() {
+            var html = CKEDITOR.instances['editor'].getData();
+            $("#Description").val(html);
+        }
+
+
+        $(document).ready(function () {
+            var data = $("#Description").val();
+            CKEDITOR.instances['editor'].setData(data);
+        });
+    </script>
+}

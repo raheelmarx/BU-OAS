@@ -1,0 +1,142 @@
+﻿@model OfficeAuto.Models.DB.Minutes
+
+@{
+    ViewData["Title"] = "Edit";
+    //var htmlData = ViewBag.HtmlData;
+    var refdocs = (List<OfficeAuto.Models.DB.ReferenceDoc>)ViewBag.ReferenceDocs;
+    List<FileStreamResult> FileStreamResults = (List<FileStreamResult>)ViewBag.FileStreamResults;
+}
+
+            @*<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            *@
+
+            <h2>Edit</h2>
+
+            <h4>Minutes</h4>
+            <hr />
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="Id" />
+                        <div class="form-group">
+                            <label asp-for="MinuteNumber" class="control-label"></label>
+                            <input asp-for="MinuteNumber" class="form-control" />
+                            <span asp-validation-for="MinuteNumber" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MinuteTitle" class="control-label"></label>
+                            <input asp-for="MinuteTitle" class="form-control" />
+                            <span asp-validation-for="MinuteTitle" class="text-danger"></span>
+                        </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+
+
+                        @*<input asp-for="Description" class="form-control" />*@
+                        @*<input id="Description" name="Description" hidden />*@
+                        <input type="hidden" asp-for="Description" />
+                        @await Html.PartialAsync("_PartialCKEditor.cshtml")
+                        @*<div class="editor-full">
+            <div id="document-full" class="ql-scroll-y" style="height: 300px;">
+
+
+            </div>
+        </div>*@
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+
+                    @*<div class="form-group">
+                            <label asp-for="CreatedBy" class="control-label"></label>
+                            <input asp-for="CreatedBy" class="form-control" />
+                            <span asp-validation-for="CreatedBy" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="UpdatedBy" class="control-label"></label>
+                            <input asp-for="UpdatedBy" class="form-control" />
+                            <span asp-validation-for="UpdatedBy" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DateUpdated" class="control-label"></label>
+                            <input asp-for="DateUpdated" class="form-control" />
+                            <span asp-validation-for="DateUpdated" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DateCreated" class="control-label"></label>
+                            <input asp-for="DateCreated" class="form-control" />
+                            <span asp-validation-for="DateCreated" class="text-danger"></span>
+                        </div>*@
+                    <div class="form-group">
+                        <label asp-for="Status" class="control-label"></label>
+                        <input asp-for="Status" class="form-control" />
+                        <span asp-validation-for="Status" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Reference Document</label>
+                        <input type="file" name="files" />
+
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-default" onclick="GetHtml();" />
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <div>
+                <table class="table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Added By</th>
+                            <th>Date Created</th>
+                            <th>File Type</th>
+                            <th>Preview</th>
+                        </tr>
+                    </thead>
+                    @foreach (var doc in refdocs)
+                    {
+                        var base64 = Convert.ToBase64String(doc.RefFile);
+                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+                    <tr>
+                        <td>@doc.RefTitle</td>
+                        <td>@doc.AddedBy</td>
+                        <td>@doc.DateCreated</td>
+                        <td>@doc.ContentType</td>
+                        <td><img src="@imgSrc" style="height:100px ; width:120px" /></td>
+                    </tr>
+
+
+                    }
+                </table>
+                </div>
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
+
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+                <script>
+
+
+                    function GetHtml() {
+                        //var html = $("<div />").append($("#document-full").clone()).html();
+                        var html = CKEDITOR.instances['editor'].getData();
+                        $("#Description").val(html);
+                    }
+                    
+
+                    $(document).ready(function () {
+                        var data = $("#Description").val();
+                        CKEDITOR.instances['editor'].setData(data);
+                    });
+
+                </script>
+            }
