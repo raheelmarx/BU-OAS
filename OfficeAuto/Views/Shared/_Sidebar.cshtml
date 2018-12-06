@@ -1,0 +1,82 @@
+﻿<div class="sidebar">
+    <nav class="sidebar-nav">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index","Home")">
+                    <i class="nav-icon icon-speedometer"></i> Dashboard
+                </a>
+            </li>
+
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="fa fa-table" aria-hidden="true"></i> Crud Manager
+                </a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Campuses")">
+                            <i class="fa fa-arrow-right" aria-hidden="true"></i> Campuses
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Departments")">
+                            <i class="fa fa-arrow-right" aria-hidden="true"></i> Departments
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Role")">
+                            <i class="fa fa-arrow-right" aria-hidden="true"></i> Roles
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Consultants")">
+                            <i class="fa fa-arrow-right" aria-hidden="true"></i> Consultants
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Contractors")">
+                            <i class="fa fa-arrow-right" aria-hidden="true"></i> Contractors
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index","Manage")">
+                    <i class="nav-icon icon-user"></i> Users
+                </a>
+            </li>
+
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="fa fa-cog" aria-hidden="true"></i> Settings
+                </a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Manage")">
+                            <i class="fa fa-arrow-right" aria-hidden="true"></i> Change Profile
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("ChangePassword","Manage")">
+                            <i class="fa fa-arrow-right" aria-hidden="true"></i> Change Password
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="divider"></li>
+            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+            {
+                @Html.AntiForgeryToken()
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">
+                        <i class="fa fa-lock"></i> Logout
+                    </a>
+                </li>
+            }
+
+
+        </ul>
+    </nav>
+    <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+</div>
