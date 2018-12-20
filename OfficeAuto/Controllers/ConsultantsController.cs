@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using OfficeAuto.Models.DB;
+using OfficeAuto.Models.ViewModels;
 
 namespace OfficeAuto.Controllers
 {
+    [Authorize]
     public class ConsultantsController : Controller
     {
         private readonly OfficeAutoDBContext _context;
@@ -45,23 +48,31 @@ namespace OfficeAuto.Controllers
         // GET: Consultants/Create
         public IActionResult Create()
         {
+            ViewData["DepartmentsList"] = new SelectList(_context.Departments, "Id", "Name");
             return View();
         }
 
-        // POST: Consultants/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Phone,Email,Address,DeptId,Status")] Consultants consultants)
+        public async Task<IActionResult> Create(ConsultantViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(consultants);
+                Consultants consul = new Consultants();
+                consul.Name = model.Name;
+                consul.Phone = model.Phone;
+                consul.Email = model.Email;
+                consul.Address = model.Address;
+                consul.DeptId = model.DeptId;
+                consul.Status = model.Status;
+                _context.Consultants.Add(consul);
+
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(consultants);
+            ViewData["DepartmentsList"] = new SelectList(_context.Departments, "Id", "Name");
+            return View(model);
         }
 
         // GET: Consultants/Edit/5
@@ -72,36 +83,50 @@ namespace OfficeAuto.Controllers
                 return NotFound();
             }
 
-            var consultants = await _context.Consultants.FindAsync(id);
-            if (consultants == null)
+            var consultant = await _context.Consultants.FindAsync(id);
+            if (consultant == null)
             {
                 return NotFound();
             }
-            return View(consultants);
+            ConsultantViewModel model;
+            model = new ConsultantViewModel
+            {
+                Id = consultant.Id,
+                Name = consultant.Name,
+                Phone = consultant.Phone,
+                Email = consultant.Email,
+                Address = consultant.Address,
+                DeptId = consultant.DeptId,
+                Status = consultant.Status
+            };
+            ViewData["DepartmentsList"] = new SelectList(_context.Departments, "Id", "Name");
+            return View(model);
         }
 
-        // POST: Consultants/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Phone,Email,Address,DeptId,Status")] Consultants consultants)
+        public async Task<IActionResult> Edit(ConsultantViewModel model)
         {
-            if (id != consultants.Id)
-            {
-                return NotFound();
-            }
-
+           
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(consultants);
+                    Consultants consul = new Consultants();
+                    consul.Id = model.Id;
+                    consul.Name = model.Name;
+                    consul.Phone = model.Phone;
+                    consul.Email = model.Email;
+                    consul.Address = model.Address;
+                    consul.DeptId = model.DeptId;
+                    consul.Status = model.Status;
+                    _context.Update(consul);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ConsultantsExists(consultants.Id))
+                    if (!ConsultantsExists(model.Id))
                     {
                         return NotFound();
                     }
@@ -112,33 +137,21 @@ namespace OfficeAuto.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(consultants);
+            ViewData["DepartmentsList"] = new SelectList(_context.Departments, "Id", "Name");
+            return View(model);
         }
-
-        // GET: Consultants/Delete/5
+        
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-
-            var consultants = await _context.Consultants
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var consultants = await _context.Consultants.FindAsync(id);
             if (consultants == null)
             {
                 return NotFound();
             }
-
-            return View(consultants);
-        }
-
-        // POST: Consultants/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var consultants = await _context.Consultants.FindAsync(id);
             _context.Consultants.Remove(consultants);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

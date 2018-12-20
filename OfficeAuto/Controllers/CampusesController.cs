@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using OfficeAuto.Models.DB;
+using OfficeAuto.Models.ViewModels;
 
 namespace OfficeAuto.Controllers
 {
+    [Authorize]
     public class CampusesController : Controller
     {
         private readonly OfficeAutoDBContext _context;
@@ -24,23 +27,7 @@ namespace OfficeAuto.Controllers
             return View(await _context.Campuses.ToListAsync());
         }
 
-        // GET: Campuses/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var campuses = await _context.Campuses
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (campuses == null)
-            {
-                return NotFound();
-            }
-
-            return View(campuses);
-        }
+      
 
         // GET: Campuses/Create
         public IActionResult Create()
@@ -48,20 +35,20 @@ namespace OfficeAuto.Controllers
             return View();
         }
 
-        // POST: Campuses/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,CampusCode")] Campuses campuses)
+        public async Task<IActionResult> Create(CampusViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(campuses);
+                Campuses camp = new Campuses();
+                camp.Name = model.Name;
+                camp.CampusCode = model.CampusCode;
+                _context.Campuses.Add(camp);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(campuses);
+            return View(model);
         }
 
         // GET: Campuses/Edit/5
@@ -77,31 +64,34 @@ namespace OfficeAuto.Controllers
             {
                 return NotFound();
             }
-            return View(campuses);
+            CampusViewModel model;
+            model = new CampusViewModel
+            {
+                Id = campuses.Id,
+                Name = campuses.Name,
+                CampusCode = campuses.CampusCode,
+            };
+            return View(model);
         }
-
-        // POST: Campuses/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,CampusCode")] Campuses campuses)
+        public async Task<IActionResult> Edit(CampusViewModel model)
         {
-            if (id != campuses.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(campuses);
+                    Campuses camp = new Campuses();
+                    camp.Id = model.Id;
+                    camp.Name = model.Name;
+                    camp.CampusCode = model.CampusCode;
+                    _context.Update(camp);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CampusesExists(campuses.Id))
+                    if (!CampusesExists(model.Id))
                     {
                         return NotFound();
                     }
@@ -112,7 +102,7 @@ namespace OfficeAuto.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(campuses);
+            return View(model);
         }
 
         // GET: Campuses/Delete/5
@@ -122,23 +112,11 @@ namespace OfficeAuto.Controllers
             {
                 return NotFound();
             }
-
-            var campuses = await _context.Campuses
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var campuses = await _context.Campuses.FindAsync(id);
             if (campuses == null)
             {
                 return NotFound();
             }
-
-            return View(campuses);
-        }
-
-        // POST: Campuses/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var campuses = await _context.Campuses.FindAsync(id);
             _context.Campuses.Remove(campuses);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

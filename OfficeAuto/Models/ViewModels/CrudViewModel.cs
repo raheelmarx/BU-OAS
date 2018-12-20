@@ -3,6 +3,18 @@
 
 namespace OfficeAuto.Models.ViewModels
 {
+    public class CampusViewModel
+    {
+        public int Id { get; set; }
+
+        [Required]
+        public string Name { get; set; }
+
+        [Required]
+        [Display(Name = "Campus Code")]
+        public string CampusCode { get; set; }
+    }
+
     public class DepartmentViewModel
     {
         public int Id { get; set; }
@@ -12,7 +24,7 @@ namespace OfficeAuto.Models.ViewModels
         public string Name { get; set; }
 
         [Required]
-        [Display(Name = "Departent Code")]
+        [Display(Name = "Department Code")]
         public string DeptCode { get; set; }
         
         [Required]
@@ -36,7 +48,7 @@ namespace OfficeAuto.Models.ViewModels
         public string Address { get; set; }
 
         [Required]
-        [Display(Name = "Departent")]
+        [Display(Name = "Department")]
         public int DeptId { get; set; }
 
         public int? Status { get; set; }
@@ -59,7 +71,7 @@ namespace OfficeAuto.Models.ViewModels
         public string Address { get; set; }
 
         [Required]
-        [Display(Name = "Departent")]
+        [Display(Name = "Department")]
         public int DeptId { get; set; }
 
         public int? Status { get; set; }

@@ -16,6 +16,7 @@ using OfficeAuto.Models.ViewModels;
 
 namespace OfficeAuto.Controllers
 {
+   
     public class CasesController : Controller
     {
         private readonly OfficeAutoDBContext _context;

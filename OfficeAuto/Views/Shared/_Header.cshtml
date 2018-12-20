@@ -84,13 +84,11 @@
                 </a>
               
 
-                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm"}))
-                {
-                @Html.AntiForgeryToken()
-                    <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">
+               
+                    <a class="dropdown-item" href="https://localhost:44312/Identity/Account/Logout">
                         <i class="fa fa-lock"></i> Logout
                     </a>
-                }
+               
 
             </div>
         </li>

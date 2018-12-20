@@ -1,7 +1,11 @@
 ﻿@page
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
 @model LoginModel
+
 @{
     ViewData["Title"] = "Log in";
+
 }
 
 
@@ -15,6 +19,8 @@
                         <p class="text-muted">Sign In to your account</p>
 
                         <form method="post">
+                            <p>ss- @HttpContextAccessor.HttpContext.Session.GetString("Attempts")</p>
+
 
                             <div asp-validation-summary="All" class="text-danger"></div>
                             <div class="input-group mb-3">
@@ -35,7 +41,12 @@
                                 </div>
                                 <input asp-for="Input.Password" class="form-control" placeholder="Password" />
                             </div>
-
+                            @if (Convert.ToInt32(TempData["Attempts"]) > 3)
+                            {
+                                <div class="input-group mb-3">
+                                    <div class="g-recaptcha" data-sitekey="@ViewData["ReCaptchaKey"]"></div>
+                                </div>
+                            }
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
                                     <div class="checkbox">
@@ -71,4 +82,4 @@
     </div>
 </div>
 
-
+<script src='https://www.google.com/recaptcha/api.js'></script>

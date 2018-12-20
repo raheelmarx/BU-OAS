@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using OfficeAuto.Models.DB;
+using OfficeAuto.Models.ViewModels;
 
 namespace OfficeAuto.Controllers
 {
+    [Authorize]
     public class ContractorsController : Controller
     {
         private readonly OfficeAutoDBContext _context;
@@ -24,44 +27,32 @@ namespace OfficeAuto.Controllers
             return View(await _context.Contractors.ToListAsync());
         }
 
-        // GET: Contractors/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var contractors = await _context.Contractors
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (contractors == null)
-            {
-                return NotFound();
-            }
-
-            return View(contractors);
-        }
-
         // GET: Contractors/Create
         public IActionResult Create()
         {
+            ViewData["DepartmentsList"] = new SelectList(_context.Departments, "Id", "Name");
             return View();
         }
-
-        // POST: Contractors/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Phone,Email,Address,DeptId,Status")] Contractors contractors)
+        public async Task<IActionResult> Create(ContractorViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(contractors);
+                Contractors contr = new Contractors();
+                contr.Name = model.Name;
+                contr.Phone = model.Phone;
+                contr.Email = model.Email;
+                contr.Address = model.Address;
+                contr.DeptId = model.DeptId;
+                contr.Status = model.Status;
+                _context.Contractors.Add(contr);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(contractors);
+            ViewData["DepartmentsList"] = new SelectList(_context.Departments, "Id", "Name");
+            return View(model);
         }
 
         // GET: Contractors/Edit/5
@@ -77,31 +68,43 @@ namespace OfficeAuto.Controllers
             {
                 return NotFound();
             }
-            return View(contractors);
+            ContractorViewModel model;
+            model = new ContractorViewModel
+            {
+                Id = contractors.Id,
+                Name = contractors.Name,
+                Phone = contractors.Phone,
+                Email = contractors.Email,
+                Address = contractors.Address,
+                DeptId = contractors.DeptId,
+                Status = contractors.Status
+            };
+            ViewData["DepartmentsList"] = new SelectList(_context.Departments, "Id", "Name");
+            return View(model);
         }
-
-        // POST: Contractors/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Phone,Email,Address,DeptId,Status")] Contractors contractors)
+        public async Task<IActionResult> Edit(ContractorViewModel model)
         {
-            if (id != contractors.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(contractors);
+                    Contractors consul = new Contractors();
+                    consul.Id = model.Id;
+                    consul.Name = model.Name;
+                    consul.Phone = model.Phone;
+                    consul.Email = model.Email;
+                    consul.Address = model.Address;
+                    consul.DeptId = model.DeptId;
+                    consul.Status = model.Status;
+                    _context.Update(consul);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ContractorsExists(contractors.Id))
+                    if (!ContractorsExists(model.Id))
                     {
                         return NotFound();
                     }
@@ -112,7 +115,8 @@ namespace OfficeAuto.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(contractors);
+            ViewData["DepartmentsList"] = new SelectList(_context.Departments, "Id", "Name");
+            return View(model);
         }
 
         // GET: Contractors/Delete/5
@@ -122,23 +126,11 @@ namespace OfficeAuto.Controllers
             {
                 return NotFound();
             }
-
-            var contractors = await _context.Contractors
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var contractors = await _context.Contractors.FindAsync(id);
             if (contractors == null)
             {
                 return NotFound();
             }
-
-            return View(contractors);
-        }
-
-        // POST: Contractors/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var contractors = await _context.Contractors.FindAsync(id);
             _context.Contractors.Remove(contractors);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

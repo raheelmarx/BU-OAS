@@ -1,4 +1,4 @@
-﻿@model OfficeAuto.Models.DB.Contractors
+﻿@model OfficeAuto.Models.ViewModels.ContractorViewModel
 
 @{
     ViewData["Title"] = "Create Contractor";
@@ -64,7 +64,7 @@
                             </div>
                             <div class="form-group">
                                 <label asp-for="DeptId" class="control-label"></label>
-                                <input asp-for="DeptId" class="form-control" />
+                                <select asp-for="DeptId" class="form-control" asp-items="ViewBag.DepartmentsList"></select>
                                 <span asp-validation-for="DeptId" class="text-danger"></span>
                             </div>
                             <div class="form-group">

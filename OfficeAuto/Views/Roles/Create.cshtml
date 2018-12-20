@@ -1,13 +1,4 @@
-﻿@model OfficeAuto.Models.ViewModels.DepartmentViewModel
-
-@{
-    ViewData["Title"] = "Create Department";
-}
-
-
-       
-
-
+﻿@model OfficeAuto.Models.ViewModels.RoleViewModel
 
 <ol class="breadcrumb">
     <li class="breadcrumb-item">Home</li>
@@ -21,7 +12,7 @@
             <a class="btn" href="#">
                 <i class="icon-speech"></i>
             </a>
-            <a class="btn" href="./">
+            <a class="btn" href="#">
                 <i class="icon-graph"></i> &nbsp;Dashboard
             </a>
             <a class="btn" href="#">
@@ -35,9 +26,9 @@
     <div class="animated fadeIn">
         <div class="card">
             <div class="card-header">
-                <i class="fa fa-plus"></i> Create Campus
+                <i class="fa fa-plus"></i> Create Role
                 <div class="card-header-actions">
-                    <a asp-action="Index" class="btn btn-sm btn-success">Back to List</a>
+                    <a asp-action="Index" class = "btn btn-sm btn-success">Back to List</a>
                 </div>
             </div>
             <div class="card-body">
@@ -51,18 +42,15 @@
                                 <span asp-validation-for="Name" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="DeptCode" class="control-label"></label>
-                                <input asp-for="DeptCode" class="form-control" />
-                                <span asp-validation-for="DeptCode" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="CampusId" class="control-label"></label>
-                                <select asp-for="CampusId" class="form-control" asp-items="ViewBag.CampusId"></select>
+                                <label asp-for="DeptId" class="control-label"></label>
+                                <select asp-for="DeptId" class="form-control" asp-items="ViewBag.Departments"></select>
+                                <span asp-validation-for="DeptId" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Create" class="btn btn-default" />
                             </div>
                         </form>
+
                     </div>
                 </div>
 

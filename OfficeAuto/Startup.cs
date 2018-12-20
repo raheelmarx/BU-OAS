@@ -38,13 +38,32 @@ namespace OfficeAuto
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            //identity configurations
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Default Lockout settings.
+                //options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.MaxFailedAccessAttempts = 6;
+                options.Lockout.AllowedForNewUsers = true;
+                options.User.RequireUniqueEmail = true;
+            });
+
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                // Set a short timeout for easy testing.
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = true;
+            });
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             //services.AddDefaultIdentity<ApplicationUser>()
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddIdentity<ApplicationUser, IdentityRole>(
+            services.AddIdentity<ApplicationUser, ApplicationRole>(
             //    options =>
             //{
             //    options.Tokens.ProviderMap.Add("Default", new TokenProviderDescriptor(typeof(IUserTwoFactorTokenProvider<ApplicationUser>)));
@@ -68,7 +87,7 @@ namespace OfficeAuto
             //.AddDefaultTokenProviders();
 
             // Add ASPNETCoreDemoDBContext services.
-            services.AddDbContext<OfficeAutoDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+           services.AddDbContext<OfficeAutoDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -90,6 +109,7 @@ namespace OfficeAuto
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
 
             app.UseAuthentication();
 
