@@ -24,7 +24,7 @@ namespace OfficeAuto.Controllers
         // GET: Departments
         public async Task<IActionResult> Index()
         {
-            var officeAutoDBContext = _context.Departments.Include(d => d.Campus);
+            var officeAutoDBContext = _context.Departments.Include(d => d.CampusId);
             return View(await officeAutoDBContext.ToListAsync());
         }
 

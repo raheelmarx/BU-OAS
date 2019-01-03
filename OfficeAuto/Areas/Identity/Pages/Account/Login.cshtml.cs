@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using OfficeAuto.Data;
 using Microsoft.Extensions.Configuration;
-using OfficeAuto.Models.Helpers;
+using OfficeAuto.Helpers;
 using Microsoft.AspNetCore.Http;
 
 namespace OfficeAuto.Areas.Identity.Pages.Account
@@ -93,11 +93,7 @@ namespace OfficeAuto.Areas.Identity.Pages.Account
             {
                 if (Convert.ToInt32(TempData["Attempts"]) > 3) {
 
-                    if (!Google.ReCaptchaPassed(
-                Request.Form["g-recaptcha-response"],
-                _configuration.GetSection("GoogleReCaptcha:secret").Value,
-                _logger
-                ))
+                    if (!Captcha.ReCaptchaPassed(Request.Form["g-recaptcha-response"],_configuration.GetSection("GoogleReCaptcha:secret").Value))
                     {
                         ModelState.AddModelError(string.Empty, "You failed the CAPTCHA,Please enter correct values.");
                         return Page();

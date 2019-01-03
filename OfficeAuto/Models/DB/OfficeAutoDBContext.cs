@@ -25,7 +25,7 @@ namespace OfficeAuto.Models.DB
         public virtual DbSet<MinutesAssignedRelease> MinutesAssignedRelease { get; set; }
         public virtual DbSet<MinutesHistory> MinutesHistory { get; set; }
         public virtual DbSet<ReferenceDoc> ReferenceDoc { get; set; }
-
+        public virtual DbSet<UserAolAod> UserAolAod { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -87,6 +87,7 @@ namespace OfficeAuto.Models.DB
                 entity.Property(e => e.DeptCode).HasMaxLength(50);
 
                 entity.Property(e => e.Name).HasMaxLength(100);
+
 
                 entity.HasOne(d => d.Campus)
                     .WithMany(p => p.Departments)

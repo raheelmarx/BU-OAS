@@ -104,5 +104,11 @@ namespace OfficeAuto.Controllers
             return View();
         }
 
+
+        public IActionResult AssignAOLAOD(string id) {
+            var users = _context.UserAolAod.Where(x => x.UserId == id && x.Status == 1).FirstOrDefault();
+            ViewData["Users"] = new SelectList(_userManager.Users, "FirstName", "FirstName");
+            return View();
+        }
     }
 }

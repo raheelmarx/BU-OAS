@@ -29,4 +29,20 @@ namespace OfficeAuto.Models.ViewModels
 
         public int? IsActive { get; set; } = 0;
     }
+    public class AssignAOLAODViewModel
+    {
+        public string Id { get; set; }
+        public string UserId { get; set; }
+        public string Type { get; set; }
+        [Display(Name = "Users")]
+        [Required]
+        public string AOUserId{ get; set; }
+        [DataType(DataType.Date)]
+        public DateTime DateAssigned { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime DateExpired{ get; set; }
+        public DateTime DateAdded { get; set; }
+        public DateTime DateUpdated { get; set; }
+        public int Status{ get; set; }
+    }
 }

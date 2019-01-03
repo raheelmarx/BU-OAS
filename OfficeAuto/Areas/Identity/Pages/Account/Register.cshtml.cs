@@ -142,7 +142,7 @@ namespace OfficeAuto.Areas.Identity.Pages.Account
 
                     //await _signInManager.SignInAsync(user, isPersistent: false);
                     */
-                    return LocalRedirect(returnUrl);
+                    return RedirectToAction("Index","Users");
                 }
                 foreach (var error in result.Errors)
                 {
