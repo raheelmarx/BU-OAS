@@ -5,3 +5,5 @@
 /OfficeAuto/bin/Debug/netcoreapp2.1
 /OfficeAuto/obj
 /.vs/OfficeAuto/v15/Server/sqlite3/db.lock
+/.vs/config/applicationhost.config
+/.vs/OfficeAuto/DesignTimeBuild/.dtbcache
