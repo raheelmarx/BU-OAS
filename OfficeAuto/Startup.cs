@@ -31,30 +31,17 @@ namespace OfficeAuto
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            var dataProtectionProviderType = typeof(DataProtectorTokenProvider<ApplicationUser>);
+            var phoneNumberProviderType = typeof(PhoneNumberTokenProvider<ApplicationUser>);
+            var emailTokenProviderType = typeof(EmailTokenProvider<ApplicationUser>);
+
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
-
-            //identity configurations
-            services.Configure<IdentityOptions>(options =>
-            {
-                // Default Lockout settings.
-                //options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
-                options.Lockout.MaxFailedAccessAttempts = 6;
-                options.Lockout.AllowedForNewUsers = true;
-                options.User.RequireUniqueEmail = true;
-            });
-
-            services.AddDistributedMemoryCache();
-
-            services.AddSession(options =>
-            {
-                // Set a short timeout for easy testing.
-                options.IdleTimeout = TimeSpan.FromSeconds(10);
-                options.Cookie.HttpOnly = true;
             });
 
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -63,14 +50,13 @@ namespace OfficeAuto
             //services.AddDefaultIdentity<ApplicationUser>()
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddIdentity<ApplicationUser, ApplicationRole>(
-            //    options =>
-            //{
-            //    options.Tokens.ProviderMap.Add("Default", new TokenProviderDescriptor(typeof(IUserTwoFactorTokenProvider<ApplicationUser>)));
-            //}
-            )
-       .AddEntityFrameworkStores<ApplicationDbContext>();
-            
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddTokenProvider(TokenOptions.DefaultProvider, dataProtectionProviderType)
+                .AddTokenProvider(TokenOptions.DefaultEmailProvider, emailTokenProviderType)
+                .AddTokenProvider(TokenOptions.DefaultPhoneProvider, phoneNumberProviderType);
+
+         
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<DataProtectionTokenProviderOptions>(o =>
             {
@@ -78,16 +64,10 @@ namespace OfficeAuto
                 o.TokenLifespan = TimeSpan.FromHours(1);
             });
 
-            // .AddDefaultTokenProviders();
-
-
-            //services.AddIdentity<ApplicationUser, IdentityRole>(config =>
-            // { config.SignIn.RequireConfirmedEmail = true; })
-            //.AddEntityFrameworkStores<ApplicationDbContext>()
-            //.AddDefaultTokenProviders();
+           
 
             // Add ASPNETCoreDemoDBContext services.
-           services.AddDbContext<OfficeAutoDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<OfficeAutoDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -109,7 +89,6 @@ namespace OfficeAuto
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-            app.UseSession();
 
             app.UseAuthentication();
 
