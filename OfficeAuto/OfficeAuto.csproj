@@ -7,19 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Controllers\**" />
-    <Content Remove="Controllers\**" />
-    <EmbeddedResource Remove="Controllers\**" />
-    <None Remove="Controllers\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Controllers\CasesController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MinutesController.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="dropzone" Version="4.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.1.2" />
@@ -52,6 +39,10 @@
     <None Include="Views\Cases\FilesUpload.cshtml" />
     <None Include="Views\Cases\Index.cshtml" />
     <None Include="Views\Cases\_PartialCKEditor.cshtml" />
+    <None Include="Views\Home\About.cshtml" />
+    <None Include="Views\Home\Contact.cshtml" />
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\Privacy.cshtml" />
     <None Include="Views\Minutes\Create.cshtml" />
     <None Include="Views\Minutes\Delete.cshtml" />
     <None Include="Views\Minutes\Details.cshtml" />
@@ -61,6 +52,13 @@
     <None Include="Views\Minutes\ReferenceUpload.cshtml" />
     <None Include="Views\Minutes\_PartialCKEditor.cshtml" />
     <None Include="Views\Minutes\_PartialEditor.cshtml" />
+    <None Include="Views\Shared\Error.cshtml" />
+    <None Include="Views\Shared\_CookieConsentPartial.cshtml" />
+    <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\Shared\_LoginPartial.cshtml" />
+    <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Views\_ViewImports.cshtml" />
+    <None Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
 
 </Project>

@@ -19,5 +19,6 @@ namespace OfficeAuto.Models.DB
 
         public ICollection<Minutes> Minutes { get; set; }
         public ICollection<MinutesAssignedRelease> MinutesAssignedRelease { get; set; }
+        public ICollection<ReferenceDoc> ReferenceDoc { get; set; }
     }
 }

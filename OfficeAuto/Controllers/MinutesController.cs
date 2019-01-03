@@ -78,7 +78,7 @@ namespace OfficeAuto.Controllers
         }
 
         // GET: Minutes/Create
-        public IActionResult Create(long caseId)
+        public async Task<IActionResult> Create(long caseId)
         {
             var @case = _context.Case.Where(x => x.Id == caseId && x.Status != 1).FirstOrDefault();
             if (@case == null)
@@ -87,6 +87,25 @@ namespace OfficeAuto.Controllers
             }
             ViewBag.CaseId = caseId;
             ViewBag.CaseNumber = @case.CaseNumber;
+
+            var minute = _context.Minutes.Where(x => x.CaseId == caseId).FirstOrDefault();
+            var refdocs = _context.ReferenceDoc.Where(x => x.MinuteId == minute.Id).ToList();
+
+            var assgnto = _context.MinutesAssignedDraft.Where(x => x.MinuteId == minute.Id).Select(x => x.AssignedToUserId).ToList();
+            CaseViewModel caseViewModel = new CaseViewModel()
+            {
+                CaseTitle = @case.CaseTitle,
+                MinuteNumber = minute.MinuteNumber,
+                MinuteTitle = minute.MinuteTitle,
+                Description = minute.Description,
+                Status = (int)@case.Status
+            };
+            ViewBag.RefDocs = refdocs;
+
+            var @users = await _userManager.Users.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Email }).ToListAsync();
+            ViewBag.Users = @users;
+            ViewBag.AssignedTo = assgnto;
+
             return View();
         }
 
@@ -95,7 +114,7 @@ namespace OfficeAuto.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,MinuteNumber,MinuteTitle,Description,CaseId,CaseTitle, Flag, Access")] CaseViewModel caseViewModel, IList<IFormFile> files)//,CreatedBy,UpdatedBy,DateUpdated,DateCreated,Status
+        public async Task<IActionResult> Create([Bind("Id,MinuteNumber,MinuteTitle,Description,CaseId,CaseTitle, Flag, Access")] CaseViewModel caseViewModel, IList<IFormFile> files, IFormCollection collection)//,CreatedBy,UpdatedBy,DateUpdated,DateCreated,Status
         {
 
             string dbConn2 = _configuration.GetValue<string>("DocURL:FileServer");
@@ -166,6 +185,37 @@ namespace OfficeAuto.Controllers
                     }
                 }
 
+                #endregion
+
+                #region AssignedToRealease
+
+                var assignedToList = collection["AssignedTo"];
+
+               
+                    var assgnto = _context.MinutesAssignedRelease.Where(x => x.CaseId == @case.Id).ToList();
+
+                    foreach (var AssignedToUserId in assignedToList)
+                    {
+                        if (assgnto.Any(x => x.AssignedToUserId == AssignedToUserId))
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            MinutesAssignedRelease minutesAssignedDraft = new MinutesAssignedRelease()
+                            {
+                                CaseId = @case.Id,
+                                AssignedFromUserId = userid,
+                                AssignedToUserId = AssignedToUserId,
+                                DateCreated = DateTime.Now,
+                                ResponseReceived = false
+                            };
+                            _context.Add(minutesAssignedDraft);
+                            _context.SaveChanges();
+                        }
+                    }
+
+                
                 #endregion
 
                 //foreach (var file in files)
@@ -239,167 +289,169 @@ namespace OfficeAuto.Controllers
             return View(caseViewModel);
         }
 
+        #region Edit/ Delete is not functional
         // GET: Minutes/Edit/5
-        public async Task<IActionResult> Edit(long? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Edit(long? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var minutes = await _context.Minutes.FindAsync(id);
-            if (minutes == null)
-            {
-                return NotFound();
-            }
-            //ViewBag.HtmlData = minutes.Description;
+        //    var minutes = await _context.Minutes.FindAsync(id);
+        //    if (minutes == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    //ViewBag.HtmlData = minutes.Description;
 
-            var refdocs = _context.ReferenceDoc.Where(t => t.MinuteId == minutes.Id).ToList();
-            List<FileStreamResult> fileStreamResult = new List<FileStreamResult>();
-            foreach (var doc in refdocs)
-            {
-                MemoryStream ms = new MemoryStream(doc.RefFile);
+        //    var refdocs = _context.ReferenceDoc.Where(t => t.MinuteId == minutes.Id).ToList();
+        //    List<FileStreamResult> fileStreamResult = new List<FileStreamResult>();
+        //    foreach (var doc in refdocs)
+        //    {
+        //        MemoryStream ms = new MemoryStream(doc.RefFile);
 
-                var filestream = new FileStreamResult(ms, doc.ContentType);
+        //        var filestream = new FileStreamResult(ms, doc.ContentType);
 
-                fileStreamResult.Add(filestream);
-            }
-            ViewBag.ReferenceDocs = refdocs;
-            ViewBag.FileStreamResults = fileStreamResult;
-            return View(minutes);
-        }
+        //        fileStreamResult.Add(filestream);
+        //    }
+        //    ViewBag.ReferenceDocs = refdocs;
+        //    ViewBag.FileStreamResults = fileStreamResult;
+        //    return View(minutes);
+        //}
 
-        // POST: Minutes/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,MinuteNumber,MinuteTitle,Description,Status")] Minutes minutes, IList<IFormFile> files)/*CreatedBy,UpdatedBy,DateUpdated,DateCreated,*/
-        {
-            IFormFile uploadedImage = files.FirstOrDefault();
+        //// POST: Minutes/Edit/5
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Edit(long id, [Bind("Id,MinuteNumber,MinuteTitle,Description,Status")] Minutes minutes, IList<IFormFile> files)/*CreatedBy,UpdatedBy,DateUpdated,DateCreated,*/
+        //{
+        //    IFormFile uploadedImage = files.FirstOrDefault();
 
-            var userid = _userManager.GetUserId(HttpContext.User);
-            var username = _userManager.GetUserName(HttpContext.User);
+        //    var userid = _userManager.GetUserId(HttpContext.User);
+        //    var username = _userManager.GetUserName(HttpContext.User);
 
-            if (id != minutes.Id)
-            {
-                return NotFound();
-            }
+        //    if (id != minutes.Id)
+        //    {
+        //        return NotFound();
+        //    }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    minutes.UpdatedBy = userid;
-                    minutes.DateUpdated = DateTime.Now;
-                    _context.Update(minutes);
-                    await _context.SaveChangesAsync();
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            minutes.UpdatedBy = userid;
+        //            minutes.DateUpdated = DateTime.Now;
+        //            _context.Update(minutes);
+        //            await _context.SaveChangesAsync();
 
-                    foreach (var file in files)
-                    {
-
-
-                        //Code to upload file in location
-                        if (file != null && file.Length > 0)
-                        {
-                            var path = Path.Combine(
-                                        Directory.GetCurrentDirectory(), "wwwroot\\ReferenceDocs\\Cases\\"+ minutes.Id,
-                                        file.FileName);
-                            if (!Directory.Exists(path))
-                            {
-                                System.IO.Directory.CreateDirectory(path);
-                            }
-                            //employeeProfileDTO.Photo = "\\images\\EmployeeProfile\\" + file.FileName;
-                            using (var stream = new FileStream(path, FileMode.Create))
-                            {
-                                await file.CopyToAsync(stream);
-                            }
-
-                            //ReferenceDoc imageEntity = new ReferenceDoc()
-                            //{
-                            //    RefTitle = file.FileName,
-                            //    RefFile = fileBytes,
-                            //    DateCreated = DateTime.Now,
-                            //    MinuteId = minutes.Id,
-                            //    AddedBy = userid,
-                            //    ContentType = file.ContentType
-                            //};
-
-                            //_context.Add(imageEntity);
-                            //await _context.SaveChangesAsync();
-                        }
+        //            foreach (var file in files)
+        //            {
 
 
+        //                //Code to upload file in location
+        //                if (file != null && file.Length > 0)
+        //                {
+        //                    var path = Path.Combine(
+        //                                Directory.GetCurrentDirectory(), "wwwroot\\ReferenceDocs\\Cases\\"+ minutes.Id,
+        //                                file.FileName);
+        //                    if (!Directory.Exists(path))
+        //                    {
+        //                        System.IO.Directory.CreateDirectory(path);
+        //                    }
+        //                    //employeeProfileDTO.Photo = "\\images\\EmployeeProfile\\" + file.FileName;
+        //                    using (var stream = new FileStream(path, FileMode.Create))
+        //                    {
+        //                        await file.CopyToAsync(stream);
+        //                    }
 
-                        //Code to save file content in Database
-                        //if (file.Length > 0)
-                        //{
-                        //    using (var ms = new MemoryStream())
-                        //    {
-                        //        file.CopyTo(ms);
-                        //        var fileBytes = ms.ToArray();
-                        //        //string s = Convert.ToBase64String(fileBytes);
-                        //        // act on the Base64 data
-                        //        ReferenceDoc imageEntity = new ReferenceDoc()
-                        //        {
-                        //            RefTitle = file.FileName,
-                        //            RefFile = fileBytes,
-                        //            DateCreated = DateTime.Now,
-                        //            MinuteId = minutes.Id,
-                        //            AddedBy = userid,
-                        //            ContentType = file.ContentType
-                        //        };
+        //                    //ReferenceDoc imageEntity = new ReferenceDoc()
+        //                    //{
+        //                    //    RefTitle = file.FileName,
+        //                    //    RefFile = fileBytes,
+        //                    //    DateCreated = DateTime.Now,
+        //                    //    MinuteId = minutes.Id,
+        //                    //    AddedBy = userid,
+        //                    //    ContentType = file.ContentType
+        //                    //};
 
-                        //        _context.Add(imageEntity);
-                        //        await _context.SaveChangesAsync();
-                        //    }
-                        //}
-                    }
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!MinutesExists(minutes.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(minutes);
-        }
+        //                    //_context.Add(imageEntity);
+        //                    //await _context.SaveChangesAsync();
+        //                }
+
+
+
+        //                //Code to save file content in Database
+        //                //if (file.Length > 0)
+        //                //{
+        //                //    using (var ms = new MemoryStream())
+        //                //    {
+        //                //        file.CopyTo(ms);
+        //                //        var fileBytes = ms.ToArray();
+        //                //        //string s = Convert.ToBase64String(fileBytes);
+        //                //        // act on the Base64 data
+        //                //        ReferenceDoc imageEntity = new ReferenceDoc()
+        //                //        {
+        //                //            RefTitle = file.FileName,
+        //                //            RefFile = fileBytes,
+        //                //            DateCreated = DateTime.Now,
+        //                //            MinuteId = minutes.Id,
+        //                //            AddedBy = userid,
+        //                //            ContentType = file.ContentType
+        //                //        };
+
+        //                //        _context.Add(imageEntity);
+        //                //        await _context.SaveChangesAsync();
+        //                //    }
+        //                //}
+        //            }
+        //        }
+        //        catch (DbUpdateConcurrencyException)
+        //        {
+        //            if (!MinutesExists(minutes.Id))
+        //            {
+        //                return NotFound();
+        //            }
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    return View(minutes);
+        //}
 
         // GET: Minutes/Delete/5
-        public async Task<IActionResult> Delete(long? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Delete(long? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var minutes = await _context.Minutes
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (minutes == null)
-            {
-                return NotFound();
-            }
+        //    var minutes = await _context.Minutes
+        //        .FirstOrDefaultAsync(m => m.Id == id);
+        //    if (minutes == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(minutes);
-        }
+        //    return View(minutes);
+        //}
 
-        // POST: Minutes/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(long id)
-        {
-            var minutes = await _context.Minutes.FindAsync(id);
-            _context.Minutes.Remove(minutes);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+        //// POST: Minutes/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteConfirmed(long id)
+        //{
+        //    var minutes = await _context.Minutes.FindAsync(id);
+        //    _context.Minutes.Remove(minutes);
+        //    await _context.SaveChangesAsync();
+        //    return RedirectToAction(nameof(Index));
+        //}
+        #endregion Edit/ Delete
 
         private bool MinutesExists(long id)
         {
@@ -469,7 +521,8 @@ namespace OfficeAuto.Controllers
             var latestminute = _context.Minutes.Where(x => x.CaseId == caseId).LastOrDefault();
             if (latestminute != null)
             {
-                return latestminute.Id + 1;
+                int minNo = int.Parse(latestminute.MinuteNumber);
+                return minNo + 1;
             }
             return 1;
         }

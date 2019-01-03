@@ -4,3 +4,7 @@
 
 /OfficeAuto/bin/Debug/netcoreapp2.1
 /OfficeAuto/obj
+/OfficeAuto/bin/Release/netcoreapp2.1
+/OfficeAuto/wwwroot/ReferenceDocs/Cases/10080/10084
+/.vs/OfficeAuto/DesignTimeBuild/.dtbcache
+/.vs/OfficeAuto/v15/Server/sqlite3/db.lock

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using OfficeAuto.Data;
 using OfficeAuto.Helpers;
 using OfficeAuto.Models.DB;
@@ -61,9 +62,47 @@ namespace OfficeAuto.Controllers
         }
 
         // GET: Cases/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create(long? CaseId, long? MinuteId)
         {
-            return View();
+            var userid = _userManager.GetUserId(HttpContext.User);
+            var username = _userManager.GetUserName(HttpContext.User);
+
+            var @users = await _userManager.Users.Select(x=> new SelectListItem { Value = x.Id.ToString(), Text = x.Email }).ToListAsync();// Get Users On base of loggedIn User
+            
+            if (userid == null)
+            {
+                return NotFound();
+            }
+            CaseViewModel caseViewModel = new CaseViewModel();
+            if (CaseId == null)
+            {
+                Case @case = new Case();
+                _context.Add(@case);
+                _context.SaveChanges();
+                caseViewModel.Id = @case.Id;
+                //ViewBag.CaseId = @case.Id;
+
+                Minutes minutes = new Minutes()
+                {
+                    CaseId = @case.Id,
+                    CreatedBy = userid
+                };
+                _context.Add(minutes);
+                _context.SaveChanges();
+                caseViewModel.MinuteId = minutes.Id;
+                //ViewBag.MinuteId = minutes.Id;
+            }
+            else
+            {
+                caseViewModel.Id = (long)CaseId;
+                caseViewModel.MinuteId = (long)MinuteId;
+                //ViewBag.CaseId = id;
+                var refdocs = _context.ReferenceDoc.Where(x => x.CaseId == CaseId).ToList();
+                ViewBag.RefDocs = refdocs;
+            }
+           
+            ViewBag.Users = @users;
+            return View(caseViewModel);
         }
 
         // POST: Cases/Create
@@ -71,90 +110,277 @@ namespace OfficeAuto.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CaseTitle,MinuteNumber,MinuteTitle,Description, Flag, Access")] CaseViewModel caseViewModel, IList<IFormFile> files)
+        public async Task<IActionResult> Create([Bind("Id,CaseTitle,MinuteNumber,MinuteId,MinuteTitle,Description,DocIds, Flag, Access")] CaseViewModel caseViewModel, IList<IFormFile> files, IFormCollection collection)
         {
-            if (ModelState.IsValid)
+           // var caseId = collection["id"].ToString();
+            if (caseViewModel.Id.ToString() == null)
             {
-                string caseNum = CaseNumberGenerator().ToString();
-                Case @case = new Case()
+                if (ModelState.IsValid)
                 {
-                    CaseTitle = caseViewModel.CaseTitle,
-                    DateCreated = DateTime.Now,
-                    Status = (short)caseViewModel.Status,
-                    CaseNumber = caseNum
-                };
-                _context.Add(@case);
-                _context.SaveChanges();
 
-                //@case.CaseNumber = @case.Id.ToString();// Call the method to generate CaseNumber
-                //_context.Update(@case);
-                //await _context.SaveChangesAsync();
+                    var assignedToList = collection["AssignedTo"];
 
-                #region Minute creation under case
-                string dbConn2 = _configuration.GetValue<string>("DocURL:FileServer");
+                    var documentSelected = collection["documentSelected"];
 
-                IFormFile uploadedImage = files.FirstOrDefault();
+                    string caseNum = CaseNumberGenerator().ToString();
+                    Case @case = new Case()
+                    {
+                        CaseTitle = caseViewModel.CaseTitle,
+                        DateCreated = DateTime.Now,
+                        Status = (short)caseViewModel.Status,
+                        CaseNumber = caseNum
+                    };
+                    _context.Add(@case);
+                    _context.SaveChanges();
 
-                var userid = _userManager.GetUserId(HttpContext.User);
-                var username = _userManager.GetUserName(HttpContext.User);
+                    //@case.CaseNumber = @case.Id.ToString();// Call the method to generate CaseNumber
+                    //_context.Update(@case);
+                    //await _context.SaveChangesAsync();
 
-                long minnum =MinuteNumberGenerator(@case.Id);
+                    #region Minute creation under case
+                    //string dbConn2 = _configuration.GetValue<string>("DocURL:FileServer");
 
-                Minutes minutes = new Minutes() {
-                    MinuteNumber = minnum.ToString(),
-                    MinuteTitle = caseViewModel.MinuteTitle,
-                    Description = caseViewModel.Description,
-                    CaseId = @case.Id,
-                CreatedBy = userid,
-                DateCreated = DateTime.Now,
-                Status = 1,
-            };
+                    //IFormFile uploadedImage = files.FirstOrDefault();
+
+                    var userid = _userManager.GetUserId(HttpContext.User);
+                    var username = _userManager.GetUserName(HttpContext.User);
+
+                    //long minnum =MinuteNumberGenerator(@case.Id);
+
+                    Minutes minutes = new Minutes()
+                    {
+                        MinuteNumber = "1",//minnum.ToString(),
+                        MinuteTitle = caseViewModel.MinuteTitle,
+                        Description = caseViewModel.Description,
+                        CaseId = @case.Id,
+                        CreatedBy = userid,
+                        DateCreated = DateTime.Now,
+                        Status = 1,
+                    };
                     _context.Add(minutes);
                     _context.SaveChanges();
 
                     #region Reference Documents creation under Minute
-                    foreach (var file in files)
+                    //foreach (var file in files)
+                    //{
+
+                    //    string fileServer = _configuration.GetValue<string>("DocURL:FileServer");
+                    //    if (file != null && file.Length > 0)
+                    //    {
+                    //        Flag flagvalue = (Flag)int.Parse(caseViewModel.Flag);
+
+                    //        var path = Path.Combine(
+                    //                        fileServer, "wwwroot\\ReferenceDocs\\Cases\\" + @case.CaseNumber + "\\" + caseViewModel.MinuteNumber + "\\" + flagvalue.ToString());
+                    //        if (!Directory.Exists(path))
+                    //        {
+                    //            System.IO.Directory.CreateDirectory(path);
+                    //        }
+
+                    //        var path2 = Path.Combine(path, file.FileName);
+                    //        using (var stream = new FileStream(path2, FileMode.Create))
+                    //        {
+                    //            await file.CopyToAsync(stream);
+                    //        }
+                    //        ReferenceDoc imageEntity = new ReferenceDoc()
+                    //        {
+                    //            RefTitle = file.FileName,
+                    //            DateCreated = DateTime.Now,
+                    //            MinuteId = minutes.Id,
+                    //            AddedBy = userid,
+                    //            ContentType = file.ContentType,
+                    //            DocPath = path2,
+                    //            Flag = caseViewModel.Flag.ToString(),
+                    //            Access = caseViewModel.Access.ToString()
+                    //        };
+
+                    //        _context.Add(imageEntity);
+                    //        await _context.SaveChangesAsync();
+
+                    //    }
+                    //}
+
+
+                    //string[] docId2 = caseViewModel.DocIds.Split(',').ToArray();
+
+                    //double[] docId3 = Array.ConvertAll(docId2, s => double.Parse(s));
+
+                    //var docIdList = _context.ReferenceDoc.Where(x => docId3.Contains(x.Id)).ToList();
+                    
+                    //foreach(var m in docIdList)
+                    //{
+                    //    m.MinuteId = minutes.Id;
+                    //    _context.Update(m);
+                    //    await _context.SaveChangesAsync();
+                    //}
+
+                    foreach (var AssignedToUserId in assignedToList)
                     {
-                    
-                        string fileServer = _configuration.GetValue<string>("DocURL:FileServer");
-                        if (file != null && file.Length > 0)
+                        if (caseViewModel.Status == 1)
                         {
-                        Flag flagvalue = (Flag)int.Parse(caseViewModel.Flag);
-
-                        var path = Path.Combine(
-                                        fileServer, "wwwroot\\ReferenceDocs\\Cases\\"+ @case.CaseNumber +"\\"+ caseViewModel.MinuteNumber + "\\" + flagvalue.ToString());
-                            if (!Directory.Exists(path))
+                            MinutesAssignedDraft minutesAssignedDraft = new MinutesAssignedDraft()
                             {
-                                System.IO.Directory.CreateDirectory(path);
-                            }
-
-                        var path2 = Path.Combine(path, file.FileName);
-                            using (var stream = new FileStream(path2, FileMode.Create))
-                            {
-                                await file.CopyToAsync(stream);
-                            }
-                        ReferenceDoc imageEntity = new ReferenceDoc()
+                                MinuteId = minutes.Id,
+                                AssignedFromUserId = userid,
+                                AssignedToUserId = AssignedToUserId,
+                                DateCreated = DateTime.Now,
+                                ResponseReceived = false
+                            };
+                            _context.Add(minutesAssignedDraft);
+                            _context.SaveChanges();
+                        }
+                        else
                         {
-                            RefTitle = file.FileName,              
-                            DateCreated = DateTime.Now,
-                            MinuteId = minutes.Id,
-                            AddedBy = userid,
-                            ContentType = file.ContentType,
-                            DocPath = path2,
-                            Flag = caseViewModel.Flag.ToString(),
-                            Access = caseViewModel.Access.ToString()
-                        };
-
-                        _context.Add(imageEntity);
-                        await _context.SaveChangesAsync();
-
+                            MinutesAssignedRelease minutesAssignedRelease = new MinutesAssignedRelease()
+                            {
+                                CaseId = @case.Id,
+                                AssignedFromUserId = userid,
+                                AssignedToUserId = AssignedToUserId,
+                                DateCreated = DateTime.Now,
+                                ResponseReceived = false
+                            };
+                            _context.Add(minutesAssignedRelease);
+                            _context.SaveChanges();
+                        }
                     }
-                    }
-                    
+
+
                     #endregion
                     return RedirectToAction(nameof(Index));
-                
-                #endregion
+
+                    #endregion
+                }
+            }
+
+            else
+            {
+                if (ModelState.IsValid)
+                {
+
+                    var assignedToList = collection["AssignedTo"];
+
+                    string caseNum = CaseNumberGenerator().ToString();
+                    var @case = _context.Case.Where(x => x.Id == caseViewModel.Id).FirstOrDefault();
+                    if (@case == null)
+                    {
+                        return NotFound();
+                    }
+                    //Case @case = new Case()
+                    //{
+                    //    CaseTitle = caseViewModel.CaseTitle,
+                    //    DateCreated = DateTime.Now,
+                    //    Status = (short)caseViewModel.Status,
+                    //    CaseNumber = caseNum
+                    //};
+
+                    @case.CaseTitle = caseViewModel.CaseTitle;
+                    @case.DateCreated = DateTime.Now;
+                    @case.Status = (short)caseViewModel.Status;
+                    @case.CaseNumber = caseNum;
+                    _context.Update(@case);
+                    await _context.SaveChangesAsync();
+
+                    //@case.CaseNumber = @case.Id.ToString();// Call the method to generate CaseNumber
+                    //_context.Update(@case);
+                    //await _context.SaveChangesAsync();
+
+                    #region Minute creation under case
+                   // string dbConn2 = _configuration.GetValue<string>("DocURL:FileServer");
+
+                    IFormFile uploadedImage = files.FirstOrDefault();
+
+                    var userid = _userManager.GetUserId(HttpContext.User);
+                    var username = _userManager.GetUserName(HttpContext.User);
+
+                    //long minnum =MinuteNumberGenerator(@case.Id);
+                    var minute = _context.Minutes.Where(x => x.CaseId == caseViewModel.Id && x.Id== caseViewModel.MinuteId).FirstOrDefault();
+                    //Minutes minutes = new Minutes()
+                    //{
+                    minute.MinuteNumber = "1";//minnum.ToString(),
+                    minute.MinuteTitle = caseViewModel.MinuteTitle;
+                    minute.Description = caseViewModel.Description;
+                    //CaseId = @case.Id,
+                    minute.CreatedBy = userid;
+                    minute.DateCreated = DateTime.Now;
+                    minute.Status = 1;
+                    //};
+                    _context.Update(minute);
+                    _context.SaveChanges();
+
+                    #region Reference Documents creation under Minute
+                    //foreach (var file in files)
+                    //{
+
+                    //    string fileServer = _configuration.GetValue<string>("DocURL:FileServer");
+                    //    if (file != null && file.Length > 0)
+                    //    {
+                    //        Flag flagvalue = (Flag)int.Parse(caseViewModel.Flag);
+
+                    //        var path = Path.Combine(
+                    //                        fileServer, "wwwroot\\ReferenceDocs\\Cases\\" + @case.CaseNumber + "\\" + caseViewModel.MinuteNumber + "\\" + flagvalue.ToString());
+                    //        if (!Directory.Exists(path))
+                    //        {
+                    //            System.IO.Directory.CreateDirectory(path);
+                    //        }
+
+                    //        var path2 = Path.Combine(path, file.FileName);
+                    //        using (var stream = new FileStream(path2, FileMode.Create))
+                    //        {
+                    //            await file.CopyToAsync(stream);
+                    //        }
+                    //        ReferenceDoc imageEntity = new ReferenceDoc()
+                    //        {
+                    //            RefTitle = file.FileName,
+                    //            DateCreated = DateTime.Now,
+                    //            MinuteId = minutes.Id,
+                    //            AddedBy = userid,
+                    //            ContentType = file.ContentType,
+                    //            DocPath = path2,
+                    //            Flag = caseViewModel.Flag.ToString(),
+                    //            Access = caseViewModel.Access.ToString()
+                    //        };
+
+                    //        _context.Add(imageEntity);
+                    //        await _context.SaveChangesAsync();
+
+                    //    }
+                    //}
+                    #endregion
+                    foreach (var AssignedToUserId in assignedToList)
+                    {
+                        if (caseViewModel.Status == 1)
+                        {
+                            MinutesAssignedDraft minutesAssignedDraft = new MinutesAssignedDraft()
+                            {
+                                MinuteId = minute.Id,
+                                AssignedFromUserId = userid,
+                                AssignedToUserId = AssignedToUserId,
+                                DateCreated = DateTime.Now,
+                                ResponseReceived = false
+                            };
+                            _context.Add(minutesAssignedDraft);
+                            _context.SaveChanges();
+                        }
+                        else
+                        {
+                            MinutesAssignedRelease minutesAssignedRelease = new MinutesAssignedRelease()
+                            {
+                                CaseId = @case.Id,
+                                AssignedFromUserId = userid,
+                                AssignedToUserId = AssignedToUserId,
+                                DateCreated = DateTime.Now,
+                                ResponseReceived = false
+                            };
+                            _context.Add(minutesAssignedRelease);
+                            _context.SaveChanges();
+                        }
+                    }
+
+
+                   
+                    return RedirectToAction(nameof(Index));
+
+                    #endregion
+                }
             }
             return View(caseViewModel);
         }
@@ -172,12 +398,14 @@ namespace OfficeAuto.Controllers
             {
                 return NotFound();
             }
-            if (@case.Status != 0)
+            if (@case.Status != 1)
             {
                 return  RedirectToAction("Create", "Minutes", new { caseId = @case.Id });
             }
             var minute =  _context.Minutes.Where(x => x.CaseId == id).FirstOrDefault();
             var refdocs = _context.ReferenceDoc.Where(x => x.MinuteId == minute.Id).ToList();
+
+            var assgnto = _context.MinutesAssignedDraft.Where(x => x.MinuteId == minute.Id).Select(x=>x.AssignedToUserId).ToList();
             CaseViewModel caseViewModel = new CaseViewModel()
             {
                 CaseTitle = @case.CaseTitle,
@@ -188,7 +416,11 @@ namespace OfficeAuto.Controllers
             };
             ViewBag.RefDocs = refdocs;
             ViewBag.CaseId = id;
-           
+
+            var @users = await _userManager.Users.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Email }).ToListAsync();
+            ViewBag.Users = @users;
+            ViewBag.AssignedTo = assgnto;
+
             return View(caseViewModel);
         }
 
@@ -197,18 +429,18 @@ namespace OfficeAuto.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,CaseTitle,DateCreated,Status,MinuteNumber,MinuteTitle,Description")] CaseViewModel caseViewModel, IList<IFormFile> files)
+        public async Task<IActionResult> Edit(long id, [Bind("Id,CaseTitle,DateCreated,Status,MinuteNumber,MinuteTitle,Description,AssignedTo")] CaseViewModel caseViewModel, IList<IFormFile> files, IFormCollection collection)
         {
             if (id != caseViewModel.Id)
             {
                 return NotFound();
             }
-
+            var assignedToList = collection["AssignedTo"];
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var @case = _context.Case.Where(x => x.Id == id && x.Status == 0).FirstOrDefault();
+                    var @case = _context.Case.Where(x => x.Id == id && x.Status == 1).FirstOrDefault();
                     if (@case == null)
                     {
                         return NotFound();
@@ -220,7 +452,7 @@ namespace OfficeAuto.Controllers
                     _context.Update(@case);
                     await _context.SaveChangesAsync();
 
-                    IFormFile uploadedImage = files.FirstOrDefault();
+                    //IFormFile uploadedImage = files.FirstOrDefault();
 
                     var userid = _userManager.GetUserId(HttpContext.User);
                     var username = _userManager.GetUserName(HttpContext.User);
@@ -291,8 +523,31 @@ namespace OfficeAuto.Controllers
                             await _context.SaveChangesAsync();
                         }
                         }
-                        
-                    
+
+                    var assgnto = _context.MinutesAssignedDraft.Where(x => x.MinuteId == minutes.Id).ToList();
+
+                    foreach (var AssignedToUserId in assignedToList)
+                    {
+                        if (assgnto.Any(x => x.AssignedToUserId == AssignedToUserId))
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            MinutesAssignedDraft minutesAssignedDraft = new MinutesAssignedDraft()
+                            {
+                                MinuteId = minutes.Id,
+                                AssignedFromUserId = userid,
+                                AssignedToUserId = AssignedToUserId,
+                                DateCreated = DateTime.Now,
+                                ResponseReceived = false
+                            };
+                            _context.Add(minutesAssignedDraft);
+                            _context.SaveChanges();
+                        }
+                    }
+
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -354,15 +609,15 @@ namespace OfficeAuto.Controllers
             return caseno;
         }
 
-        public long MinuteNumberGenerator(long caseId)
-        {
-            var latestminute =  _context.Minutes.Where(x=>x.CaseId == caseId).LastOrDefault();
-            if (latestminute != null)
-            {
-                return latestminute.Id + 1;
-            }
-            return 1;
-        }
+        //public long MinuteNumberGenerator(long caseId)
+        //{
+        //    var latestminute =  _context.Minutes.Where(x=>x.CaseId == caseId).LastOrDefault();
+        //    if (latestminute != null)
+        //    {
+        //        return latestminute.Id + 1;
+        //    }
+        //    return 1;
+        //}
 
     }
 }

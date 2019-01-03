@@ -64,13 +64,7 @@ namespace OfficeAuto
                 o.TokenLifespan = TimeSpan.FromHours(1);
             });
 
-            // .AddDefaultTokenProviders();
-
-
-            //services.AddIdentity<ApplicationUser, IdentityRole>(config =>
-            // { config.SignIn.RequireConfirmedEmail = true; })
-            //.AddEntityFrameworkStores<ApplicationDbContext>()
-            //.AddDefaultTokenProviders();
+           
 
             // Add ASPNETCoreDemoDBContext services.
             services.AddDbContext<OfficeAutoDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
