@@ -21,7 +21,7 @@ namespace OfficeAuto.Models.DB
         public virtual DbSet<Contractors> Contractors { get; set; }
         public virtual DbSet<Departments> Departments { get; set; }
         public virtual DbSet<Minutes> Minutes { get; set; }
-        public virtual DbSet<MinutesAssidnedDraft> MinutesAssidnedDraft { get; set; }
+        public virtual DbSet<MinutesAssignedDraft> MinutesAssignedDraft { get; set; }
         public virtual DbSet<MinutesAssignedRelease> MinutesAssignedRelease { get; set; }
         public virtual DbSet<MinutesHistory> MinutesHistory { get; set; }
         public virtual DbSet<ReferenceDoc> ReferenceDoc { get; set; }
@@ -116,31 +116,43 @@ namespace OfficeAuto.Models.DB
                     .HasConstraintName("FK_Minutes_Case");
             });
 
-            modelBuilder.Entity<MinutesAssidnedDraft>(entity =>
+            modelBuilder.Entity<MinutesAssignedDraft>(entity =>
             {
-                entity.Property(e => e.Assignee).HasMaxLength(50);
+                entity.Property(e => e.AssignedFromUserId)
+                    .HasColumnName("AssignedFrom_UserId")
+                    .HasMaxLength(50);
 
-                entity.Property(e => e.Assigner).HasMaxLength(50);
+                entity.Property(e => e.AssignedToUserId)
+                    .HasColumnName("AssignedTo_UserId")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.DateCreated).HasColumnType("datetime");
 
                 entity.Property(e => e.DateUpdated).HasColumnType("datetime");
 
+                entity.Property(e => e.ResponseReceived).HasColumnName("Response_Received");
+
                 entity.HasOne(d => d.Minute)
-                    .WithMany(p => p.MinutesAssidnedDraft)
+                    .WithMany(p => p.MinutesAssignedDraft)
                     .HasForeignKey(d => d.MinuteId)
-                    .HasConstraintName("FK_MinutesAssidnedDraft_Minutes");
+                    .HasConstraintName("FK_MinutesAssignedDraft_Minutes");
             });
 
             modelBuilder.Entity<MinutesAssignedRelease>(entity =>
             {
-                entity.Property(e => e.Assignee).HasMaxLength(50);
+                entity.Property(e => e.AssignedFromUserId)
+                    .HasColumnName("AssignedFrom_UserId")
+                    .HasMaxLength(50);
 
-                entity.Property(e => e.Assigner).HasMaxLength(50);
+                entity.Property(e => e.AssignedToUserId)
+                    .HasColumnName("AssignedTo_UserId")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.DateCreated).HasColumnType("datetime");
 
                 entity.Property(e => e.DateUpdated).HasColumnType("datetime");
+
+                entity.Property(e => e.ResponseReceived).HasColumnName("Response_Received");
 
                 entity.HasOne(d => d.Case)
                     .WithMany(p => p.MinutesAssignedRelease)
@@ -182,6 +194,10 @@ namespace OfficeAuto.Models.DB
 
                 entity.Property(e => e.RefTitle).HasMaxLength(150);
 
+                entity.HasOne(d => d.Case)
+                    .WithMany(p => p.ReferenceDoc)
+                    .HasForeignKey(d => d.CaseId)
+                    .HasConstraintName("FK_ReferenceDoc_Case");
                 entity.HasOne(d => d.Minute)
                     .WithMany(p => p.ReferenceDoc)
                     .HasForeignKey(d => d.MinuteId)

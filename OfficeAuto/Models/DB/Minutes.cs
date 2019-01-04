@@ -7,7 +7,7 @@ namespace OfficeAuto.Models.DB
     {
         public Minutes()
         {
-            MinutesAssidnedDraft = new HashSet<MinutesAssidnedDraft>();
+            MinutesAssignedDraft = new HashSet<MinutesAssignedDraft>();
             MinutesHistory = new HashSet<MinutesHistory>();
             ReferenceDoc = new HashSet<ReferenceDoc>();
         }
@@ -24,7 +24,7 @@ namespace OfficeAuto.Models.DB
         public short? Status { get; set; }
 
         public Case Case { get; set; }
-        public ICollection<MinutesAssidnedDraft> MinutesAssidnedDraft { get; set; }
+        public ICollection<MinutesAssignedDraft> MinutesAssignedDraft { get; set; }
         public ICollection<MinutesHistory> MinutesHistory { get; set; }
         public ICollection<ReferenceDoc> ReferenceDoc { get; set; }
     }

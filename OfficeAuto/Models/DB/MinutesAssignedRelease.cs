@@ -7,8 +7,8 @@ namespace OfficeAuto.Models.DB
     {
         public long Id { get; set; }
         public long? CaseId { get; set; }
-        public string Assigner { get; set; }
-        public string Assignee { get; set; }
+        public string AssignedFromUserId { get; set; }
+        public string AssignedToUserId { get; set; }
         public DateTime? DateCreated { get; set; }
         public DateTime? DateUpdated { get; set; }
         public bool? ResponseReceived { get; set; }
