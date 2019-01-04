@@ -106,7 +106,30 @@ namespace OfficeAuto.Controllers
 
 
         public IActionResult AssignAOLAOD(string id) {
-            var users = _context.UserAolAod.Where(x => x.UserId == id && x.Status == 1).FirstOrDefault();
+            AssignAOLAODViewModel model = new AssignAOLAODViewModel();
+            model.UserId = id;
+            ViewData["Users"] = new SelectList(_userManager.Users, "FirstName", "FirstName");
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AssignAOLAOD(AssignAOLAODViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //var users = _context.UserAolAod.Where(x => x.UserId == model.UserId && x.Status == 1).FirstOrDefault();
+                UserAolAod user = new UserAolAod();
+                user.Type = model.Type;
+                user.UserId = model.UserId;
+                user.AoUserid = model.AOUserId;
+                user.DateAssigned = model.DateAssigned;
+                user.DateExpired = model.DateExpired;
+                user.DateAdded = DateTime.Now;
+                _context.UserAolAod.Add(user);
+                 _context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
             ViewData["Users"] = new SelectList(_userManager.Users, "FirstName", "FirstName");
             return View();
         }
