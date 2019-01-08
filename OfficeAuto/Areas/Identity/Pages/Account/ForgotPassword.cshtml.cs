@@ -42,7 +42,9 @@ namespace OfficeAuto.Areas.Identity.Pages.Account
                 if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
                 {
                     // Don't reveal that the user does not exist or is not confirmed
-                    return RedirectToPage("./ForgotPasswordConfirmation");
+                    //  return RedirectToPage("./ForgotPasswordConfirmation");
+                    ModelState.AddModelError(string.Empty, "Email address not found, try using valid email.");
+                    return Page();
                 }
 
                 // For more information on how to enable account confirmation and password reset please 
@@ -58,8 +60,8 @@ namespace OfficeAuto.Areas.Identity.Pages.Account
                     Input.Email,
                     "Reset Password",
                     $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-
-                return RedirectToPage("./ForgotPasswordConfirmation");
+                   ModelState.AddModelError(string.Empty, "Please check your email to reset your password.");
+                   return Page();
             }
 
             return Page();

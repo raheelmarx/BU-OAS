@@ -47,6 +47,25 @@ namespace OfficeAuto.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
+            public string Id { get; set; }
+
+            [Required]
+            public string Title { get; set; }
+            [Required]
+            public string FirstName { get; set; }
+            [Required]
+            public string LastName { get; set; }
+            [Required]
+            public string Address { get; set; }
+            [Required]
+            public string City { get; set; }
+            [Required]
+            public string Province { get; set; }
+            [Required]
+            public string Country { get; set; }
+
+           
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -57,16 +76,24 @@ namespace OfficeAuto.Areas.Identity.Pages.Account.Manage
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-            var userName = await _userManager.GetUserNameAsync(user);
-            var email = await _userManager.GetEmailAsync(user);
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-
-            Username = userName;
-
+           // var userName = await _userManager.GetUserNameAsync(user);
+          //  var email = await _userManager.GetEmailAsync(user);
+           // var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            var userId = _userManager.GetUserId(User);
+            var userData = await _userManager.FindByIdAsync(userId);
+            Username = userData.UserName;
             Input = new InputModel
             {
-                Email = email,
-                PhoneNumber = phoneNumber
+                Id=userData.Id,
+                Email = userData.Email,
+                PhoneNumber = userData.PhoneNumber,
+                Title = userData.Title,
+                FirstName=userData.FirstName,
+                LastName=userData.LastName,
+                Address=userData.Address,
+                City=userData.City,
+                Province=userData.Province,
+                Country=userData.Country
             };
 
             IsEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);
@@ -108,6 +135,17 @@ namespace OfficeAuto.Areas.Identity.Pages.Account.Manage
                     throw new InvalidOperationException($"Unexpected error occurred setting phone number for user with ID '{userId}'.");
                 }
             }
+           // var userData = await _userManager.FindByIdAsync(Input.Id);
+
+            user.Title = Input.Title;
+            user.FirstName = Input.FirstName;
+            user.LastName = Input.LastName;
+            user.Address = Input.Address;
+            user.City = Input.City;
+            user.Province = Input.Province;
+            user.Country = Input.Country;
+           
+            await _userManager.UpdateAsync(user);
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";

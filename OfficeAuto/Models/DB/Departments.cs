@@ -9,7 +9,6 @@ namespace OfficeAuto.Models.DB
         public string Name { get; set; }
         public string DeptCode { get; set; }
         public int CampusId { get; set; }
-
         public Campuses Campus { get; set; }
     }
 }

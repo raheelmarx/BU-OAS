@@ -1,0 +1,77 @@
+﻿@model OfficeAuto.Models.ViewModels.AssignAOLAODViewModel
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item">
+        <a href="#">Admin</a>
+    </li>
+    <li class="breadcrumb-item active">Dashboard</li>
+
+    <li class="breadcrumb-menu d-md-down-none">
+        <div class="btn-group" role="group" aria-label="Button group">
+            <a class="btn" href="#">
+                <i class="icon-speech"></i>
+            </a>
+            <a class="btn" href="#">
+                <i class="icon-graph"></i> &nbsp;Dashboard
+            </a>
+            <a class="btn" href="#">
+                <i class="icon-settings"></i> &nbsp;Settings
+            </a>
+        </div>
+    </li>
+</ol>
+<div class="container-fluid">
+
+    <div class="animated fadeIn">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-user-secret"></i> Assign AOL & AOD
+                <div class="card-header-actions">
+                    <a asp-action="Index" class="btn btn-sm btn-success">Back to List</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form asp-action="AssignAOLAOD">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="UserId" />
+                            <div class="form-group">
+                                <label asp-for="Type" class="control-label"></label>
+                                <input asp-for="Type" class="form-control" />
+                                <span asp-validation-for="Type" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="AOUserId" class="control-label"></label>
+                                <select asp-for="AOUserId" class="form-control" asp-items="ViewBag.Users">
+                                    <option value="">Select Value</option>
+                                </select>
+                                <span asp-validation-for="AOUserId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DateAssigned" class="control-label"></label>
+                                <input asp-for="DateAssigned" class="form-control" />
+                                <span asp-validation-for="DateAssigned" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DateExpired" class="control-label"></label>
+                                <input asp-for="DateExpired" class="form-control" />
+                                <span asp-validation-for="DateExpired" class="text-danger"></span>
+                            </div>
+                           
+                            <div class="form-group">
+                                <input type="submit" value="Save" class="btn btn-default" />
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

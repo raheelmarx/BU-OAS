@@ -25,12 +25,11 @@ namespace OfficeAuto.Models.DB
         public virtual DbSet<MinutesAssignedRelease> MinutesAssignedRelease { get; set; }
         public virtual DbSet<MinutesHistory> MinutesHistory { get; set; }
         public virtual DbSet<ReferenceDoc> ReferenceDoc { get; set; }
-
+        public virtual DbSet<UserAolAod> UserAolAod { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Server=DESKTOP-0VVCHT6\\RAHEEL;Database=OfficeAutoDB;Trusted_Connection=True;");
             }
         }
@@ -88,6 +87,7 @@ namespace OfficeAuto.Models.DB
                 entity.Property(e => e.DeptCode).HasMaxLength(50);
 
                 entity.Property(e => e.Name).HasMaxLength(100);
+
 
                 entity.HasOne(d => d.Campus)
                     .WithMany(p => p.Departments)
