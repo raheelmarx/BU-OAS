@@ -9,7 +9,7 @@ using OfficeAuto.Models;
 
 namespace OfficeAuto.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class HomeController : Controller
     {
         public IActionResult Index()

@@ -36,7 +36,13 @@ namespace OfficeAuto
             var phoneNumberProviderType = typeof(PhoneNumberTokenProvider<ApplicationUser>);
             var emailTokenProviderType = typeof(EmailTokenProvider<ApplicationUser>);
 
-
+            //identity configurations
+            services.Configure<IdentityOptions>(options =>            {
+                // Default Lockout settings.
+                //options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.MaxFailedAccessAttempts = 6;                options.Lockout.AllowedForNewUsers = true;                options.User.RequireUniqueEmail = true;            });            services.AddDistributedMemoryCache();            services.AddSession(options =>            {
+                // Set a short timeout for easy testing.
+                options.IdleTimeout = TimeSpan.FromSeconds(10);                options.Cookie.HttpOnly = true;            });
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -50,7 +56,7 @@ namespace OfficeAuto
             //services.AddDefaultIdentity<ApplicationUser>()
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddTokenProvider(TokenOptions.DefaultProvider, dataProtectionProviderType)
                 .AddTokenProvider(TokenOptions.DefaultEmailProvider, emailTokenProviderType)
@@ -89,6 +95,7 @@ namespace OfficeAuto
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
 
             app.UseAuthentication();
 
