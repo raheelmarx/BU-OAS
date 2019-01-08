@@ -39,10 +39,7 @@
     <None Include="Views\Cases\FilesUpload.cshtml" />
     <None Include="Views\Cases\Index.cshtml" />
     <None Include="Views\Cases\_PartialCKEditor.cshtml" />
-    <None Include="Views\Home\About.cshtml" />
-    <None Include="Views\Home\Contact.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
-    <None Include="Views\Home\Privacy.cshtml" />
     <None Include="Views\Minutes\Create.cshtml" />
     <None Include="Views\Minutes\Delete.cshtml" />
     <None Include="Views\Minutes\Details.cshtml" />
