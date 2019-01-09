@@ -1,0 +1,41 @@
+﻿@model OfficeAuto.Models.ViewModels.CaseViewModel
+@using OfficeAuto.Helpers;
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+
+<form asp-controller="File" asp-action="UploadFile" method="post"
+      enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-4">
+            <label class="control-label">Enclouser  1</label>
+        </div>
+        <div class="col-md-4">
+            <input asp-for="Id" class="form-control" hidden="hidden" readonly />
+            <input asp-for="MinuteId" class="form-control" hidden="hidden" readonly />
+            @*<input type="file" class="form-control multipleSelect" multiple name="files" />*@
+        </div>
+
+        <div class="col-md-12">
+            <div class="form-group">
+                @*<label class="control-label">File</label>*@
+                <input type="file" class="form-control multipleSelect" multiple name="files" />
+
+            </div>
+        </div>
+
+
+      
+        <br /><br />
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <label class="control-label"></label>
+        </div>
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-primary btn-icon-text">Upload</button>
+        </div>
+    </div>
+</form>

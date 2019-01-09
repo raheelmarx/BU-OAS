@@ -30,7 +30,7 @@ namespace OfficeAuto.Models.DB
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=DESKTOP-0VVCHT6\\RAHEEL;Database=OfficeAutoDB;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-0VVCHT6\\RAHEEL;Database=OfficeAutoDummy;Trusted_Connection=True;");
             }
         }
 

@@ -8,3 +8,12 @@
 *.ide
 *.ide-shm
 *.ide-wal
+.vs/OfficeAuto/v15/Server/sqlite3/storage.ide
+.vs/OfficeAuto/DesignTimeBuild/.dtbcache
+.vs/OfficeAuto/v15/.suo
+.vs/OfficeAuto/v15/Server/sqlite3/storage.ide
+*.ide
+.vs/OfficeAuto/v15/Server/sqlite3/storage.ide-shm
+*.ide-shm
+.vs/OfficeAuto/v15/Server/sqlite3/storage.ide-wal
+*.ide-wal
