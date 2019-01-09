@@ -16,7 +16,13 @@ namespace OfficeAuto.Controllers
         {
             return View();
         }
-        
+        public IActionResult DetailedStats() {
+            return View();
+        }
+        public IActionResult Inbox()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

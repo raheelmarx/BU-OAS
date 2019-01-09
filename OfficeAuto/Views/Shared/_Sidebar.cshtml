@@ -3,15 +3,163 @@
         <ul class="nav">
             <li class="nav-item">
                 <a class="nav-link" href="@Url.Action("Index","Home")">
-                    <i class="nav-icon icon-speedometer"></i> Dashboard
+                    <i class="nav-icon icon-home" aria-hidden="true"></i> Home
                 </a>
             </li>
 
             <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#">
-                    <i class="fa fa-table" aria-hidden="true"></i> Crud Manager
+                    <i class="fa fa-file" aria-hidden="true"></i> Case Files
                 </a>
                 <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Identity">
+                            <i class="fa fa-inbox" aria-hidden="true"></i> Inbox
+                            <span class="badge badge-primary">14</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage">
+                            <i class="fa fa-square" aria-hidden="true"></i>
+                            Outbox
+                            <span class="badge badge-primary">15</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            Drafts
+                            <span class="badge badge-primary">15</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage">
+                            <i class="fa fa-share" aria-hidden="true"></i>
+                            DFA Sent
+                            <span class="badge badge-primary">2</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage">
+                            <i class="fa fa-check-circle" aria-hidden="true"></i>
+                            DFA Received
+                            <span class="badge badge-primary">15</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                            Create New Case
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="fa fa-envelope" aria-hidden="true"></i> Letter
+                </a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Identity">
+                            <i class="fa fa-inbox" aria-hidden="true"></i> Inbox
+                            <span class="badge badge-primary">14</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage">
+                            <i class="fa fa-square" aria-hidden="true"></i>
+                            Outbox
+                            <span class="badge badge-primary">15</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            Drafts
+                            <span class="badge badge-primary">15</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage">
+                            <i class="fa fa-share" aria-hidden="true"></i>
+                            DFA Sent
+                            <span class="badge badge-primary">2</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage">
+                            <i class="fa fa-check-circle" aria-hidden="true"></i>
+                            DFA Received
+                            <span class="badge badge-primary">15</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                            Create New Case
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="fa fa-file-text" aria-hidden="true"></i> Memorandom
+                </a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Identity">
+                            <i class="fa fa-inbox" aria-hidden="true"></i> Inbox
+                            <span class="badge badge-primary">14</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage">
+                            <i class="fa fa-square" aria-hidden="true"></i>
+                            Outbox
+                            <span class="badge badge-primary">15</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            Drafts
+                            <span class="badge badge-primary">15</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage">
+                            <i class="fa fa-share" aria-hidden="true"></i>
+                            DFA Sent
+                            <span class="badge badge-primary">2</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage">
+                            <i class="fa fa-check-circle" aria-hidden="true"></i>
+                            DFA Received
+                            <span class="badge badge-primary">15</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                            Create New Case
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                    Administration Panel
+                </a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Users" asp-action="Index">
+                            <i class="fa fa-arrow-right" aria-hidden="true"></i>  Users
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="Campuses" asp-action="Index">
                             <i class="fa fa-arrow-right" aria-hidden="true"></i> Campuses
@@ -40,12 +188,25 @@
                 </ul>
             </li>
 
+
             <li class="nav-item">
-                <a class="nav-link" asp-controller="Users" asp-action="Index">
-                    <i class="nav-icon icon-user"></i> Users
+                <a class="nav-link" href="#">
+                    <i class="fa fa-archive" aria-hidden="true"></i>
+                    My Archives
                 </a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    Search
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fa fa-desktop" aria-hidden="true"></i>
+                    Monitoring Services
+                </a>
+            </li>
             <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#">
                     <i class="fa fa-cog" aria-hidden="true"></i> Settings
@@ -65,13 +226,13 @@
             </li>
 
             <li class="divider"></li>
-           
-                <li class="nav-item">
-                    <a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/Account/Login" class="nav-link">
-                        <i class="fa fa-lock"></i> Logout
-                    </a>
-                </li>
-           
+
+            <li class="nav-item">
+                <a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/Account/Login" class="nav-link">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+                </a>
+            </li>
+
 
         </ul>
     </nav>
