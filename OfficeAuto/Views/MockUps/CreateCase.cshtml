@@ -45,103 +45,129 @@
                         <form asp-action="Create" method="post" enctype="multipart/form-data">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <input asp-for="Id" class="form-control" hidden="hidden" readonly />
-                            <input asp-for="MinuteId" class="form-control" hidden="hidden" readonly />
-                            <div class="form-group">
-                                <label asp-for="CaseTitle" class="control-label"></label>
-                                <input asp-for="CaseTitle" class="form-control" />
-                                <span asp-validation-for="CaseTitle" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                @*<label asp-for="MinuteTitle" class="control-label" style="align-items:center">Minute 1</label>*@
-                                <input asp-for="MinuteTitle" value="Minute 1" class="form-control" style="text-align:center;  border:none; background-color:transparent" readonly />
-                                @*<span asp-validation-for="MinuteTitle" class="text-danger"></span>*@
-                            </div>
-
-
-
-                            <div class="form-group">
-                               
-                                <input asp-for="Description" id="Description" name="Description" hidden />
-
-                                @await Html.PartialAsync("_PartialCKEditor.cshtml")
-
-                               
-                            </div>
-
-
-                            @if (refdocs != null)
-                            {
+                            <input asp-for="MinuteId" class="form-control" hidden="hidden" readonly />  
+                            <div class="card">
                                 <div class="form-group">
-                                    <label class="control-label">Enclosers</label>
-                                    <button type="button" class="btn btn-save btn-lg" data-toggle="modal" data-target="#myModal" style="float:right"><i class="fa fa-file"> Attach Enclosure(s)</i></button>
-
-                                    <table class="table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>Encloser #</th>
-                                                <th>Encloser Name</th>
-                                                <th></th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-
-                                        @foreach (var doc in refdocs)
-                                        {
-
-                                            <tr>
-                                                <td>Encloser No @doc.Id</td>
-                                                <td>@doc.RefTitle</td>
-                                                <td><button type="button" class="btn default" onclick='checkFluency("@doc.DocPath","@doc.RefTitle");'>Remove</button> </td>
-                                                <td><button type="button" class="btn default" onclick='checkFluency("@doc.DocPath","@doc.RefTitle");'>Add Link</button> </td>
-                                            </tr>
+                                    <br />
 
 
-                                        }
-                                    </table>
-                                </div>}
+                                              <label asp-for="CaseTitle" class="control-label">Case File Title:</label>
+                                    </div><div class="col-sm-10">
+    <input asp-for="CaseTitle" placeholder="A Case File Title - Example" class="form-control" />
+    <span asp-validation-for="CaseTitle" class="text-danger"></span>
+</div>
+</div>
+                            </div>
+                                <div class="form-group">
+                                    <label asp-for="MinuteTitle" class="control-label" style="align-items:center">Minute 1</label>
+                                    @*<input asp-for="MinuteTitle" value="Minute 1" class="form-control" style="text-align:center;  border:none; background-color:transparent" readonly />*@
+                                    @*<span asp-validation-for="MinuteTitle" class="text-danger"></span>*@
+                                </div>
 
-                            <div class="form-group">
-                                <label class="control-label">Set Priority</label>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <input type="radio" title="Normal" checked /> Normal<br />
-                                    </div><div class="col-sm-3">
-                                        <input type="radio" title="Immediate" />Immediate<br />
-                                    </div><div class="col-sm-3">
-                                        <input type="radio" title="Most Immediate" />Most Immediate<br />
+
+
+                                <div class="form-group">
+
+                                    <input asp-for="Description" id="Description" name="Description" hidden />
+
+                                    @await Html.PartialAsync("_PartialCKEditor.cshtml")
+
+
+                                </div>
+
+                                <div class="card">
+                                    @if (refdocs != null)
+                                    {<br />
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <div class="col-sm-2">
+                                                    <label class="control-label">Enclosers</label>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <button type="button" class="btn btn-save btn-lg" data-toggle="modal" data-target="#myModal" style="float:right"><i class="fa fa-file"> Attach Enclosure(s)</i></button>
+                                                </div>
+                                            </div><div class="col-sm-12">
+
+                                                <div class="col-sm-1"> </div>
+                                                <div class="col-sm-11">
+                                                    <br />
+                                                    <table class="table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Encloser #</th>
+                                                                <th>Encloser Name</th>
+                                                                <th></th>
+                                                                <th></th>
+                                                            </tr>
+                                                        </thead>
+
+                                                        @foreach (var doc in refdocs)
+                                                        {
+
+                                                            <tr>
+                                                                <td>Encloser No @doc.Id</td>
+                                                                <td>@doc.RefTitle</td>
+                                                                <td><button type="button" class="btn btn-link" onclick='checkFluency("@doc.DocPath","@doc.RefTitle");'>Remove</button> </td>
+                                                                <td><button type="button" class="btn btn-link" onclick='checkFluency("@doc.DocPath","@doc.RefTitle");'>Add Link</button> </td>
+                                                            </tr>
+
+
+                                                        }
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>}
+                                </div>
+                                <div class="card">
+                                    <div class="form-group">
+                                        <br /><div class="col-sm-2">
+                                            <label class="control-label">Set Priority</label>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <input type="radio" title="Normal" checked /> Normal<br />
+                                            </div><div class="col-sm-3">
+                                                <input type="radio" title="Immediate" />Immediate<br />
+                                            </div><div class="col-sm-3">
+                                                <input type="radio" title="Most Immediate" />Most Immediate<br />
+                                            </div>
+                                        </div>
+                                        <span asp-validation-for="AssignedTo" class="text-danger"></span>
                                     </div>
                                 </div>
-                                <span asp-validation-for="AssignedTo" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="AssignedTo" class="control-label">To</label>
+                                <div class="card">
+                                    <div class="form-group">
+                                        <br /><div class="col-sm-1">
+                                            <label asp-for="AssignedTo" class="control-label">To</label>
+                                        </div><div class="col-sm-11">
+                                            <select name="AssignedTo" asp-for="AssignedTo" asp-items="ViewBag.Users" class="form-control multipleSelect" multiple></select>@*(List<SelectListItem> )*@
 
-                                <select name="AssignedTo" asp-for="AssignedTo" asp-items="ViewBag.Users" class="form-control multipleSelect" multiple></select>@*(List<SelectListItem> )*@
-
-                                <span asp-validation-for="AssignedTo" class="text-danger"></span>
-                            </div>
-
-
-                            @*<div class="form-group">
-                                    <label asp-for="AssignedTo" class="control-label"></label>
-                                    <input type="hidden" asp-for="DocIds" value="" id="testID2" />
-
-                                    <span asp-validation-for="AssignedTo" class="text-danger"></span>
-                                </div>*@
+                                            <span asp-validation-for="AssignedTo" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
 
 
+                                @*<div class="form-group">
+            <label asp-for="AssignedTo" class="control-label"></label>
+            <input type="hidden" asp-for="DocIds" value="" id="testID2" />
+
+            <span asp-validation-for="AssignedTo" class="text-danger"></span>
+        </div>*@
 
 
-                            <div class="form-group" style="float:right">
-                                <button type="submit" value="Release" class="btn btn-info"> <i class="fa fa-send"> Release</i></button>
-                                <button type="submit" value="DFA" class="btn btn-save"> <i class="fa fa-reply"> DFA</i></button>
-                                <button type="submit" value="Save & Close" class="btn btn-save" onclick="GetHtml();"> <i class="fa fa-save"> Save & Close</i></button>
-                                @*<i class="fa fa-plus"></i><input type="submit" value="Save & Close" class="btn btn-default" onclick="GetHtml();" />*@
-                                <button type="submit" value="Preview" class="btn btn-save"> <i class="fa fa-eye"> Preview</i></button>
-                                <button type="submit" value="Discard" class="btn btn-save"> <i class="fa fa-trash"> Discard</i></button>
-                            </div>
 
-                        </form>
+
+                                <div class="form-group" style="float:right">
+                                    <button type="submit" value="Release" class="btn btn-info"> <i class="fa fa-send"> Release</i></button>
+                                    <button type="submit" value="DFA" class="btn btn-save"> <i class="fa fa-reply"> DFA</i></button>
+                                    <button type="submit" value="Save & Close" class="btn btn-save" onclick="GetHtml();"> <i class="fa fa-save"> Save & Close</i></button>
+                                    @*<i class="fa fa-plus"></i><input type="submit" value="Save & Close" class="btn btn-default" onclick="GetHtml();" />*@
+                                    <button type="submit" value="Preview" class="btn btn-save"> <i class="fa fa-eye"> Preview</i></button>
+                                    <button type="submit" value="Discard" class="btn btn-save"> <i class="fa fa-trash"> Discard</i></button>
+                                </div>
+
+</form>
                         <div class="row">
                             <!-- Modal -->
                             <div class="modal fade" id="myModal" role="dialog">
