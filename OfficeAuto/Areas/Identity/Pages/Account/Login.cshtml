@@ -18,7 +18,7 @@
                         <p class="text-muted">Sign In to your account</p>
 
                         <form method="post">
-                            <p>ss- @HttpContextAccessor.HttpContext.Session.GetString("Attempts")</p>
+                            @*<p>ss- @HttpContextAccessor.HttpContext.Session.GetString("Attempts")</p>*@
 
 
                             <div asp-validation-summary="All" class="text-danger"></div>
@@ -69,11 +69,9 @@
                 </div>
                 <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
                     <div class="card-body text-center">
-                        <div>
-                            <h2>Sign up</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <a asp-page="./Register" class="btn btn-primary active mt-3" asp-route-returnUrl="@Model.ReturnUrl">Register Now!</a>
-                        </div>
+                       
+                            <img src="~/img/brand/bu_trans.png" class="img-fluid img-thumbnail"  alt="BU Logo" />
+                        
                     </div>
                 </div>
             </div>

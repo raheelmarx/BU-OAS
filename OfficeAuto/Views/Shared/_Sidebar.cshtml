@@ -13,41 +13,41 @@
                 </a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
-                        <a class="nav-link" asp-action="Identity">
+                        <a class="nav-link" asp-controller="Home" asp-action="Inbox">
                             <i class="fa fa-inbox" aria-hidden="true"></i> Inbox
                             <span class="badge badge-primary">14</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage">
+                        <a class="nav-link" asp-controller="Home" asp-action="Outbox">
                             <i class="fa fa-square" aria-hidden="true"></i>
                             Outbox
                             <span class="badge badge-primary">15</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage">
+                        <a class="nav-link" asp-controller="Home" asp-action="Drafts">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             Drafts
                             <span class="badge badge-primary">15</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage">
+                        <a class="nav-link" asp-controller="Home" asp-action="DFAsent">
                             <i class="fa fa-share" aria-hidden="true"></i>
                             DFA Sent
                             <span class="badge badge-primary">2</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage">
+                        <a class="nav-link" asp-controller="Home" asp-action="DFAReceived">
                             <i class="fa fa-check-circle" aria-hidden="true"></i>
                             DFA Received
                             <span class="badge badge-primary">15</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage">
+                        <a class="nav-link" href="#">
                             <i class="fa fa-plus" aria-hidden="true"></i>
                             Create New Case
                         </a>
@@ -148,7 +148,6 @@
                     </li>
                 </ul>
             </li>
-
             <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#">
                     <i class="fa fa-unlock-alt" aria-hidden="true"></i>
