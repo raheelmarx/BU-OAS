@@ -44,22 +44,24 @@
     <script src="~/vendors/datatables/jquery.dataTables.js" type="text/javascript"></script>
     <script src="~/vendors/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
     <!-- Plugins and scripts required by this view-->
-    @*<script src="~/vendors/chart.js/js/Chart.min.js"></script>*@
+    <script src="~/vendors/chart.js/js/Chart.min.js"></script>
     <script src="~/vendors/coreui/coreui-plugin-chartjs-custom-tooltips/js/custom-tooltips.min.js"></script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.multipleSelect').select2();
-            $('.multipleSelect').select2({
-                maximumSelectionLength: 1,
-                tags: true
+
+    <link href="~/dist/css/bootstrap-multiselect.css" rel="stylesheet" />
+    <script src="~/dist/js/bootstrap-multiselect.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.multipleSelect').select2();
+                $('.multipleSelect').select2({
+                    maximumSelectionLength: 1,
+                    tags: true
+                });
+
             });
 
-        });
-
-    </script>
-    <script src="~/js/main.js"></script>
+        </script>*@
+    @*<script src="~/js/main.js"></script>*@
     <script type="text/javascript">
         $(function () {
             $("#dataTables").dataTable();

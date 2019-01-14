@@ -1,41 +1,51 @@
-﻿@model OfficeAuto.Models.ViewModels.CaseViewModel
-@using OfficeAuto.Helpers;
+﻿@*@model OfficeAuto.Models.ViewModels.CaseViewModel
+@using OfficeAuto.Helpers;*@
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
+<div id="myModal" class="modal fade"  role="dialog">
+    <div class="modal-dialog">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
 
-<form asp-controller="File" asp-action="UploadFile" method="post"
-      enctype="multipart/form-data">
-    <div class="row">
-        <div class="col-md-4">
-            <label class="control-label">Enclouser  1</label>
-        </div>
-        <div class="col-md-4">
-            <input asp-for="Id" class="form-control" hidden="hidden" readonly />
-            <input asp-for="MinuteId" class="form-control" hidden="hidden" readonly />
-            @*<input type="file" class="form-control multipleSelect" multiple name="files" />*@
-        </div>
+                <h4 class="modal-title">Enclouser Attachment</h4>
 
-        <div class="col-md-12">
-            <div class="form-group">
-                @*<label class="control-label">File</label>*@
-                <input type="file" class="form-control multipleSelect" multiple name="files" />
+            </div>
+            <div class="modal-body">
+                <form  method="post" enctype="multipart/form-data">
+                   
+                        <div class="col-md-4">
+                            <label class="control-label">Enclouser  1</label>
+                        </div>
+                        @*<div class="col-md-4">
+                            <input class="form-control" hidden="hidden" readonly />
+                            <input  class="form-control" hidden="hidden" readonly />
+                        </div>*@
 
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="file" class="form-control multipleSelect" multiple name="files" />
+
+                            </div>
+                        </div>
+                  
+                        <div class="col-md-12">
+                            <label class="control-label"></label>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary btn-icon-text">Upload</button>
+                        </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
 
+    </div>
+</div>
 
-      
-        <br /><br />
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <label class="control-label"></label>
-        </div>
-        <div class="col-md-12">
-            <button type="submit" class="btn btn-primary btn-icon-text">Upload</button>
-        </div>
-    </div>
-</form>

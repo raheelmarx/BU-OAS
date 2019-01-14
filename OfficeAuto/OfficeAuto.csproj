@@ -92,6 +92,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Views\MockUps\CreateMinute.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\MockUps\PartialFile.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

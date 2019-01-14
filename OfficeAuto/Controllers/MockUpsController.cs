@@ -30,16 +30,21 @@ namespace OfficeAuto.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> CreateCase()
+        public IActionResult CreateCase()
         {
-            var userid = _userManager.GetUserId(HttpContext.User);
-            var username = _userManager.GetUserName(HttpContext.User);
+            //var userid = _userManager.GetUserId(HttpContext.User);
+            //var username = _userManager.GetUserName(HttpContext.User);
 
-            var @users = await _userManager.Users.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Email }).ToListAsync();// Get Users On base of loggedIn User
-            ViewBag.Users = @users;
-            var refdocs = _context.ReferenceDoc.Where(x => x.CaseId == 10080).ToList();
-            ViewBag.RefDocs = refdocs;
+            //var @users = await _userManager.Users.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Email }).ToListAsync();// Get Users On base of loggedIn User
+            //ViewBag.Users = @users;
+            //var refdocs = _context.ReferenceDoc.Where(x => x.CaseId == 10089).ToList();
+            //ViewBag.RefDocs = refdocs;
             return View();
         }
+        public IActionResult CreateMinute()
+        {
+            return View();
+        }
+
     }
 }
