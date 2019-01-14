@@ -13,6 +13,7 @@
     <link href="~/vendors/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
     <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="~/vendors/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <!-- DataTables -->
     <link href="https://coreui.io/demo/vendors/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
 
@@ -45,7 +46,22 @@
     <!-- Plugins and scripts required by this view-->
     <script src="~/vendors/chart.js/js/Chart.min.js"></script>
     <script src="~/vendors/coreui/coreui-plugin-chartjs-custom-tooltips/js/custom-tooltips.min.js"></script>
-    <script src="~/js/main.js"></script>
+
+    <link href="~/dist/css/bootstrap-multiselect.css" rel="stylesheet" />
+    <script src="~/dist/js/bootstrap-multiselect.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.multipleSelect').select2();
+                $('.multipleSelect').select2({
+                    maximumSelectionLength: 1,
+                    tags: true
+                });
+
+            });
+
+        </script>*@
+    @*<script src="~/js/main.js"></script>*@
     <script type="text/javascript">
 
         $("#dataTables").DataTable();

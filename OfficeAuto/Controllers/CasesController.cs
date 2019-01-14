@@ -17,7 +17,7 @@ using OfficeAuto.Models.ViewModels;
 
 namespace OfficeAuto.Controllers
 {
-   
+
     public class CasesController : Controller
     {
         private readonly OfficeAutoDBContext _context;
@@ -41,6 +41,7 @@ namespace OfficeAuto.Controllers
         // GET: Cases
         public async Task<IActionResult> Index()
         {
+            //Review 1
             return View(await _context.Case.ToListAsync());
         }
 
@@ -69,7 +70,7 @@ namespace OfficeAuto.Controllers
             var username = _userManager.GetUserName(HttpContext.User);
 
             var @users = await _userManager.Users.Select(x=> new SelectListItem { Value = x.Id.ToString(), Text = x.Email }).ToListAsync();// Get Users On base of loggedIn User
-            
+
             if (userid == null)
             {
                 return NotFound();
@@ -101,13 +102,13 @@ namespace OfficeAuto.Controllers
                 var refdocs = _context.ReferenceDoc.Where(x => x.CaseId == CaseId).ToList();
                 ViewBag.RefDocs = refdocs;
             }
-           
+
             ViewBag.Users = @users;
             return View(caseViewModel);
         }
 
         // POST: Cases/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -206,7 +207,7 @@ namespace OfficeAuto.Controllers
                     //double[] docId3 = Array.ConvertAll(docId2, s => double.Parse(s));
 
                     //var docIdList = _context.ReferenceDoc.Where(x => docId3.Contains(x.Id)).ToList();
-                    
+
                     //foreach(var m in docIdList)
                     //{
                     //    m.MinuteId = minutes.Id;
@@ -377,7 +378,7 @@ namespace OfficeAuto.Controllers
                     }
 
 
-                   
+
                     return RedirectToAction(nameof(Index));
 
                     #endregion
@@ -426,7 +427,7 @@ namespace OfficeAuto.Controllers
         }
 
         // POST: Cases/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
