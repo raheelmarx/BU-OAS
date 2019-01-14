@@ -286,7 +286,18 @@
 </div>
 <script>
     $(document).ready(function () {
-        $('#demo').multiselect();
+        $('#demo').multiselect({
+            numberDisplayed: 20,
+            includeSelectAllOption: true,
+            enableFiltering: true,
+            enableCaseInsensitiveFiltering: true,
+            dropRight: true,
+            maxHeight: 400,
+            buttonWidth: '450px',
+            buttonContainer: '<span class="dropdown" />',
+            filterPlaceholder: 'Search',
+            buttonClass: 'btn btn-secondary'
+        });
     });
     function GetHtml() {
         var html = CKEDITOR.instances['editor'].getData();
