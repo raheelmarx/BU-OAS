@@ -1,0 +1,135 @@
+﻿@{
+    ViewData["Title"] = "Detailed Statistics";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item">
+        <a href="#">Admin</a>
+    </li>
+    <li class="breadcrumb-item active">Dashboard</li>
+
+
+</ol>
+<div class="container-fluid">
+
+    <div class="animated fadeIn">
+        <div class="card">
+            <div class="card-header">
+                <h3>Detailed Statistics</h3>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>
+                                        Inbox (<small>Total Unread</small>)
+                                    </th>
+                                    <th>Outbox</th>
+                                    <th>
+                                        DFA Sent
+                                    </th>
+                                    <th>
+                                        DFA Recieved
+                                    </th>
+                                    <th>
+                                        Drafts
+                                    </th>
+                                    <th>
+                                        Archives
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td>
+                                        Cases Files
+                                    </td>
+                                    <td>
+                                        <a asp-action="Inbox"> 10 (3)</a>
+                                    </td>
+
+                                    <td>
+                                        <a asp-action="Outbox">15</a>
+                                    </td>
+                                    <td>
+                                        <a asp-action="DFAsent"> 1</a>
+                                    </td>
+                                    <td>
+                                        <a asp-action="DFAReceived">4</a>
+                                    </td>
+                                    <td>
+                                        <a href="#"> 0</a>
+                                    </td>
+                                    <td>
+                                        <a href="#">10</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Letters
+                                    </td>
+                                    <td>
+                                        <a href="#"> 20 (7)</a>
+                                    </td>
+
+                                    <td>
+                                        <a href="#"> 3</a>
+                                    </td>
+
+                                    <td>
+                                        <a href="#">2</a>
+                                    </td>
+                                    <td>
+                                        <a href="#">3</a>
+                                    </td>
+                                    <td>
+                                        <a href="#">3</a>
+                                    </td>
+                                    <td>
+                                        <a href="#"> 5</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Memorandums
+                                    </td>
+                                    <td>
+                                        <a href="#">15 (5)</a>
+                                    </td>
+
+                                    <td>
+                                        <a href="#">7</a>
+                                    </td>
+                                    <td>
+                                        <a href="#">1</a>
+                                    </td>
+                                    
+                                    <td>
+                                        <a href="#">7</a>
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+                        <a asp-action="Index" class="float-right">Back to Home</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

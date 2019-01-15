@@ -16,7 +16,38 @@ namespace OfficeAuto.Controllers
         {
             return View();
         }
-        
+        public IActionResult DetailedStats() {
+            return View();
+        }
+        public IActionResult Inbox()
+        {
+            return View();
+        }
+        public IActionResult Outbox()
+        {
+            return View();
+        }
+        public IActionResult Drafts()
+        {
+            return View();
+        }
+        public IActionResult DFAsent()
+        {
+            return View();
+        }
+        public IActionResult DFAReceived()
+        {
+            return View();
+        }
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+        public IActionResult Profile()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

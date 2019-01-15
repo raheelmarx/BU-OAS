@@ -3,30 +3,18 @@
 <ol class="breadcrumb">
     <li class="breadcrumb-item">Home</li>
     <li class="breadcrumb-item">
-        <a href="#">Admin</a>
+        <a asp-action="">Roles</a>
     </li>
-    <li class="breadcrumb-item active">Dashboard</li>
+    <li class="breadcrumb-item active">Edit Role</li>
 
-    <li class="breadcrumb-menu d-md-down-none">
-        <div class="btn-group" role="group" aria-label="Button group">
-            <a class="btn" href="#">
-                <i class="icon-speech"></i>
-            </a>
-            <a class="btn" href="#">
-                <i class="icon-graph"></i> &nbsp;Dashboard
-            </a>
-            <a class="btn" href="#">
-                <i class="icon-settings"></i> &nbsp;Settings
-            </a>
-        </div>
-    </li>
+    
 </ol>
 <div class="container-fluid">
 
     <div class="animated fadeIn">
         <div class="card">
             <div class="card-header">
-                <i class="fa fa-plus"></i> Create Role
+                <i class="fa fa-plus"></i> Edit Role
                 <div class="card-header-actions">
                     <a asp-action="Index" class="btn btn-sm btn-success">Back to List</a>
                 </div>
@@ -34,22 +22,43 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-12">
-                        <form asp-action="Edit">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <form action="" method="post">
+
                             <div class="form-group">
-                                <label asp-for="Name" class="control-label"></label>
-                                <input asp-for="Name" class="form-control" />
-                                <span asp-validation-for="Name" class="text-danger"></span>
+                                <label class="control-label" for="Name">RoleName</label>
+                                <input class="form-control" type="text" data-val="true" data-val-required="The RoleName field is required." id="Name" name="Name" value="Director">
+                                <span class="text-danger field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="DeptId" class="control-label"></label>
-                                <select asp-for="DeptId" class="form-control" asp-items="ViewBag.Departments"></select>
-                                <span asp-validation-for="DeptId" class="text-danger"></span>
+                                <label class="control-label" for="DeptId">Department</label>
+                                <select class="form-control" data-val="true" data-val-required="The Department field is required." id="DeptId" name="DeptId">
+                                    <option value="4">Computer Science</option>
+                                    <option value="5">Business Administration</option>
+                                    <option value="6">Chemistry</option>
+                                </select>
+                                <span class="text-danger field-validation-valid" data-valmsg-for="DeptId" data-valmsg-replace="true"></span>
                             </div>
                             <div class="form-group">
-                                <input type="submit" value="Save" class="btn btn-default" />
+                                <input type="submit" value="Save" class="btn btn-default">
                             </div>
+                            
                         </form>
+                        @*<form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeptId" class="control-label"></label>
+                <select asp-for="DeptId" class="form-control" asp-items="ViewBag.Departments"></select>
+                <span asp-validation-for="DeptId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>*@
 
                     </div>
                 </div>
