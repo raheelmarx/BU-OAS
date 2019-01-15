@@ -212,12 +212,12 @@
                 </a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage">
+                        <a class="nav-link" asp-action="Profile" asp-controller="Home">
                             <i class="fa fa-arrow-right" aria-hidden="true"></i> Change Profile
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/ChangePassword">
+                        <a class="nav-link" asp-action="ChangePassword" asp-controller="Home">
                             <i class="fa fa-arrow-right" aria-hidden="true"></i> Change Password
                         </a>
                     </li>
@@ -227,7 +227,7 @@
             <li class="divider"></li>
 
             <li class="nav-item">
-                <a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/Account/Login" class="nav-link">
+                <a asp-area="Identity" asp-page="/Account/Login" class="nav-link">
                     <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
                 </a>
             </li>

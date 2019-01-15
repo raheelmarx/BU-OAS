@@ -3,23 +3,11 @@
 <ol class="breadcrumb">
     <li class="breadcrumb-item">Home</li>
     <li class="breadcrumb-item">
-        <a href="#">Admin</a>
+        <a asp-action="">Users</a>
     </li>
-    <li class="breadcrumb-item active">Dashboard</li>
+    <li class="breadcrumb-item active">Edit User</li>
 
-    <li class="breadcrumb-menu d-md-down-none">
-        <div class="btn-group" role="group" aria-label="Button group">
-            <a class="btn" href="#">
-                <i class="icon-speech"></i>
-            </a>
-            <a class="btn" href="#">
-                <i class="icon-graph"></i> &nbsp;Dashboard
-            </a>
-            <a class="btn" href="#">
-                <i class="icon-settings"></i> &nbsp;Settings
-            </a>
-        </div>
-    </li>
+    
 </ol>
 <div class="container-fluid">
 
@@ -34,81 +22,165 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-12">
-                        <form asp-action="Edit">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <input type="hidden" asp-for="Id" />
+                        <form action="" method="post">
+
+                            <input type="hidden" id="Id" name="Id" value="17e42f1a-8a0e-468b-af03-71f8b31a6e4a">
                             <div class="form-group">
-                                <label asp-for="Title" class="control-label"></label>
-                                <input asp-for="Title" class="form-control" />
-                                <span asp-validation-for="Title" class="text-danger"></span>
+                                <label class="control-label" for="Title">Title</label>
+                                <input class="form-control" type="text" id="Title" name="Title" value="Mr sdf" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
+                                <span class="text-danger field-validation-valid" data-valmsg-for="Title" data-valmsg-replace="true"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="FirstName" class="control-label"></label>
-                                <input asp-for="FirstName" class="form-control" />
-                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                                <label class="control-label" for="FirstName">FirstName</label>
+                                <input class="form-control" type="text" id="FirstName" name="FirstName" value="asdf">
+                                <span class="text-danger field-validation-valid" data-valmsg-for="FirstName" data-valmsg-replace="true"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="LastName" class="control-label"></label>
-                                <input asp-for="LastName" class="form-control" />
-                                <span asp-validation-for="LastName" class="text-danger"></span>
+                                <label class="control-label" for="LastName">LastName</label>
+                                <input class="form-control" type="text" id="LastName" name="LastName" value="asdf">
+                                <span class="text-danger field-validation-valid" data-valmsg-for="LastName" data-valmsg-replace="true"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="Email" class="control-label"></label>
-                                <input asp-for="Email" class="form-control" />
-                                <span asp-validation-for="Email" class="text-danger"></span>
+                                <label class="control-label" for="Email">Email</label>
+                                <input class="form-control" type="text" id="Email" name="Email" value="saqlain.sial05@gmail.com">
+                                <span class="text-danger field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="Address" class="control-label"></label>
-                                <input asp-for="Address" class="form-control" />
-                                <span asp-validation-for="Address" class="text-danger"></span>
+                                <label class="control-label" for="Address">Address</label>
+                                <input class="form-control" type="text" id="Address" name="Address" value="House # 2d, near shell pump g-6/4 Islambad asdf">
+                                <span class="text-danger field-validation-valid" data-valmsg-for="Address" data-valmsg-replace="true"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="City" class="control-label"></label>
-                                <input asp-for="City" class="form-control" />
-                                <span asp-validation-for="City" class="text-danger"></span>
+                                <label class="control-label" for="City">City</label>
+                                <input class="form-control" type="text" id="City" name="City" value="Islamabad asdf">
+                                <span class="text-danger field-validation-valid" data-valmsg-for="City" data-valmsg-replace="true"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="Province" class="control-label"></label>
-                                <input asp-for="Province" class="form-control" />
-                                <span asp-validation-for="Province" class="text-danger"></span>
+                                <label class="control-label" for="Province">Province</label>
+                                <input class="form-control" type="text" id="Province" name="Province" value="Capital asdf">
+                                <span class="text-danger field-validation-valid" data-valmsg-for="Province" data-valmsg-replace="true"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="Country" class="control-label"></label>
-                                <input asp-for="Country" class="form-control" />
-                                <span asp-validation-for="Country" class="text-danger"></span>
+                                <label class="control-label" for="Country">Country</label>
+                                <input class="form-control" type="text" id="Country" name="Country" value="Pakistanasdf ">
+                                <span class="text-danger field-validation-valid" data-valmsg-for="Country" data-valmsg-replace="true"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="CampusId" class="control-label"></label>
-                                <select asp-for="CampusId" class="form-control" asp-items="ViewBag.Campuses">
+                                <label class="control-label" for="CampusId">Campus</label>
+                                <select class="form-control" data-val="true" data-val-required="The Campus field is required." id="CampusId" name="CampusId">
                                     <option value="">Select Value</option>
+                                    <option selected="selected" value="3">BU Islamabad</option>
+                                    <option value="5">asdf</option>
                                 </select>
-                                <span asp-validation-for="CampusId" class="text-danger"></span>
+                                <span class="text-danger field-validation-valid" data-valmsg-for="CampusId" data-valmsg-replace="true"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="DeptId" class="control-label"></label>
-                                <select asp-for="DeptId" class="form-control" asp-items="ViewBag.Departments">
+                                <label class="control-label" for="DeptId">Department</label>
+                                <select class="form-control" data-val="true" data-val-required="The Department field is required." id="DeptId" name="DeptId">
                                     <option value="">Select Value</option>
+                                    <option selected="selected" value="4">Computer Science</option>
+                                    <option value="5">Business Administration</option>
+                                    <option value="6">Chemistry</option>
                                 </select>
-                                <span asp-validation-for="DeptId" class="text-danger"></span>
+                                <span class="text-danger field-validation-valid" data-valmsg-for="DeptId" data-valmsg-replace="true"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="RoleId" class="control-label"></label>
-                                <select asp-for="RoleId" class="form-control" asp-items="ViewBag.Roles">
+                                <label class="control-label" for="RoleId">Role</label>
+                                <select class="form-control" id="RoleId" name="RoleId">
                                     <option value="">Select Value</option>
+                                    <option value="Director">Director</option>
                                 </select>
-                                <span asp-validation-for="RoleId" class="text-danger"></span>
+                                <span class="text-danger field-validation-valid" data-valmsg-for="RoleId" data-valmsg-replace="true"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="IsActive" class="control-label"></label>
-                                <select asp-for="IsActive" class="form-control" asp-items="ViewBag.Statuslist">
+                                <label class="control-label" for="IsActive">IsActive</label>
+                                <select class="form-control" id="IsActive" name="IsActive">
                                     <option value="">Select Value</option>
+                                    <option selected="selected" value="0">In-Active</option>
+                                    <option value="1">Active</option>
+                                    <option value="2">Block</option>
                                 </select>
-                                <span asp-validation-for="IsActive" class="text-danger"></span>
+                                <span class="text-danger field-validation-valid" data-valmsg-for="IsActive" data-valmsg-replace="true"></span>
                             </div>
                             <div class="form-group">
-                                <input type="submit" value="Save" class="btn btn-default" />
+                                <input type="submit" value="Save" class="btn btn-default">
                             </div>
                         </form>
+                        @*<form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Province" class="control-label"></label>
+                <input asp-for="Province" class="form-control" />
+                <span asp-validation-for="Province" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Country" class="control-label"></label>
+                <input asp-for="Country" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CampusId" class="control-label"></label>
+                <select asp-for="CampusId" class="form-control" asp-items="ViewBag.Campuses">
+                    <option value="">Select Value</option>
+                </select>
+                <span asp-validation-for="CampusId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeptId" class="control-label"></label>
+                <select asp-for="DeptId" class="form-control" asp-items="ViewBag.Departments">
+                    <option value="">Select Value</option>
+                </select>
+                <span asp-validation-for="DeptId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoleId" class="control-label"></label>
+                <select asp-for="RoleId" class="form-control" asp-items="ViewBag.Roles">
+                    <option value="">Select Value</option>
+                </select>
+                <span asp-validation-for="RoleId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsActive" class="control-label"></label>
+                <select asp-for="IsActive" class="form-control" asp-items="ViewBag.Statuslist">
+                    <option value="">Select Value</option>
+                </select>
+                <span asp-validation-for="IsActive" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>*@
 
                     </div>
                 </div>

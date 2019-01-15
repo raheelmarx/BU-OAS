@@ -1,26 +1,11 @@
-﻿@model IEnumerable<OfficeAuto.Data.ApplicationRole>
+﻿
 
 
 <ol class="breadcrumb">
-    <li class="breadcrumb-item">Home</li>
-    <li class="breadcrumb-item">
-        <a href="#">Admin</a>
-    </li>
-    <li class="breadcrumb-item active">Dashboard</li>
+    <li class="breadcrumb-item"> <a asp-action="Index" asp-controller="Home">Home</a></li>
+    <li class="breadcrumb-item active">Roles</li>
 
-    <li class="breadcrumb-menu d-md-down-none">
-        <div class="btn-group" role="group" aria-label="Button group">
-            <a class="btn" href="#">
-                <i class="icon-speech"></i>
-            </a>
-            <a class="btn" href="./">
-                <i class="icon-graph"></i> &nbsp;Dashboard
-            </a>
-            <a class="btn" href="#">
-                <i class="icon-settings"></i> &nbsp;Settings
-            </a>
-        </div>
-    </li>
+    
 </ol>
 <div class="container-fluid">
     @TempData["errorMsg"]
@@ -35,34 +20,115 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-12">
-                        <table id="dataTables_1" class="table table-striped table-bordered">
-                            <tr>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Name)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.DeptId)
-                                </th>
-                                <th>
-                                </th>
-                            </tr>
-                            @foreach (var item in Model)
-                            {
+                        <table id="dataTables" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Department
+                                    </th>
+                                    <th>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Name)
+                                        Director
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.DeptId)
+                                        Computer Science
                                     </td>
                                     <td>
 
-                                        <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit"></i></a>
-                                        <a onclick="return confirm('Are you sure want to delete this?');" asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id"><i class="fa fa-trash-o"></i></a>
+                                        <a class="btn btn-info" href="/Roles/Edit/6a8f70e8-e623-4c6e-b23c-81b9921ac607"><i class="fa fa-edit"></i></a>
+                                        <a onclick="return confirm('Are you sure want to delete this?');" class="btn btn-danger" href="#"><i class="fa fa-trash-o"></i></a>
                                     </td>
                                 </tr>
-                            }
+                                <tr>
+                                    <td>
+                                        Director
+                                    </td>
+                                    <td>
+                                        Computer Science
+                                    </td>
+                                    <td>
+
+                                        <a class="btn btn-info" href="/Roles/Edit/6a8f70e8-e623-4c6e-b23c-81b9921ac607"><i class="fa fa-edit"></i></a>
+                                        <a onclick="return confirm('Are you sure want to delete this?');" class="btn btn-danger" href="#"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Director
+                                    </td>
+                                    <td>
+                                        Computer Science
+                                    </td>
+                                    <td>
+
+                                        <a class="btn btn-info" href="/Roles/Edit/6a8f70e8-e623-4c6e-b23c-81b9921ac607"><i class="fa fa-edit"></i></a>
+                                        <a onclick="return confirm('Are you sure want to delete this?');" class="btn btn-danger" href="#"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Director
+                                    </td>
+                                    <td>
+                                        Computer Science
+                                    </td>
+                                    <td>
+
+                                        <a class="btn btn-info" href="/Roles/Edit/6a8f70e8-e623-4c6e-b23c-81b9921ac607"><i class="fa fa-edit"></i></a>
+                                        <a onclick="return confirm('Are you sure want to delete this?');" class="btn btn-danger" href="#"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Director
+                                    </td>
+                                    <td>
+                                        Computer Science
+                                    </td>
+                                    <td>
+
+                                        <a class="btn btn-info" href="/Roles/Edit/6a8f70e8-e623-4c6e-b23c-81b9921ac607"><i class="fa fa-edit"></i></a>
+                                        <a onclick="return confirm('Are you sure want to delete this?');" class="btn btn-danger" href="#"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
+                        @*<table id="dataTables_1" class="table table-striped table-bordered">
+            <tr>@model IEnumerable<OfficeAuto.Data.ApplicationRole>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DeptId)
+                </th>
+                <th>
+                </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DeptId)
+                    </td>
+                    <td>
+
+                        <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit"></i></a>
+                        <a onclick="return confirm('Are you sure want to delete this?');" asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id"><i class="fa fa-trash-o"></i></a>
+                    </td>
+                </tr>
+            }
+        </table>*@
 
                     </div>
                 </div>
