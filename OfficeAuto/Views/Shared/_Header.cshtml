@@ -3,7 +3,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="#">
-        <img class="navbar-brand-full" src="~/img/brand/BU_Logo.png" width="89" height="25"  alt="BU Logo">
+        <img class="navbar-brand-full" src="~/img/brand/BU.png" style="width:35%;"   alt="BU Logo">
     </a>
     <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
         <span class="navbar-toggler-icon"></span>
@@ -18,16 +18,16 @@
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <img class="img-avatar" src="~/img/avatars/6.jpg" alt="admin@bootstrapmaster.com">
+                <img class="img-avatar" src="~/img/avatars/ss.png" alt="admin@bootstrapmaster.com">
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-header text-center">
                     <strong>Settings</strong>
                 </div>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" asp-action="Profile" asp-controller="Home">
                     <i class="fa fa-user"></i> Profile
                 </a>
-                    <a class="dropdown-item" href="https://localhost:44312/Identity/Account/Logout">
+                    <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Login">
                         <i class="fa fa-lock"></i> Logout
                     </a>
                

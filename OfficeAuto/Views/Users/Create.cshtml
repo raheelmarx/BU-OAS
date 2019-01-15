@@ -1,0 +1,116 @@
+﻿@{
+    ViewData["Title"] = "Create User";
+}
+
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item">
+        <a asp-action="Index">Users</a>
+    </li>
+    <li class="breadcrumb-item active">Create User</li>
+
+</ol>
+<div class="container-fluid">
+
+    <div class="animated fadeIn">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-plus"></i> Create User
+                <div class="card-header-actions">
+                    <a asp-action="Index" class="btn btn-sm btn-success">Back to List</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form method="post" action="" >
+                            <div class="form-group">
+                                <label class="control-label" for="Input_Title">Title</label>
+                                <input class="form-control" placeholder="Title" type="text" data-val="true" data-val-required="The Title field is required." id="Input_Title" name="Input.Title" value="" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
+                                <span class="text-danger field-validation-valid" data-valmsg-for="Input.Title" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="Input_FirstName">FirstName</label>
+                                <input class="form-control" placeholder="First Name" type="text" data-val="true" data-val-required="The FirstName field is required." id="Input_FirstName" name="Input.FirstName" value="">
+                                <span class="text-danger field-validation-valid" data-valmsg-for="Input.FirstName" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="Input_LastName">LastName</label>
+                                <input class="form-control" placeholder="Last Name" type="text" data-val="true" data-val-required="The LastName field is required." id="Input_LastName" name="Input.LastName" value="">
+                                <span class="text-danger field-validation-valid" data-valmsg-for="Input.LastName" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="Input_Address">Address</label>
+                                <input class="form-control" placeholder="Address" type="text" data-val="true" data-val-required="The Address field is required." id="Input_Address" name="Input.Address" value="">
+                                <span class="text-danger field-validation-valid" data-valmsg-for="Input.Address" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="Input_Email">Email</label>
+                                <input class="form-control" placeholder="Email" type="email" data-val="true" data-val-email="The Email field is not a valid e-mail address." data-val-required="The Email field is required." id="Input_Email" name="Input.Email" value="">
+                                <span class="text-danger field-validation-valid" data-valmsg-for="Input.Email" data-valmsg-replace="true"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label" for="Input_Password">Password</label>
+                                <input class="form-control" placeholder="Password" type="password" data-val="true" data-val-length="The Password must be at least 6 and at max 100 characters long." data-val-length-max="100" data-val-length-min="6" data-val-required="The Password field is required." id="Input_Password" name="Input.Password" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACIUlEQVQ4EX2TOYhTURSG87IMihDsjGghBhFBmHFDHLWwSqcikk4RRKJgk0KL7C8bMpWpZtIqNkEUl1ZCgs0wOo0SxiLMDApWlgOPrH7/5b2QkYwX7jvn/uc//zl3edZ4PPbNGvF4fC4ajR5VrNvt/mo0Gr1ZPOtfgWw2e9Lv9+chX7cs64CS4Oxg3o9GI7tUKv0Q5o1dAiTfCgQCLwnOkfQOu+oSLyJ2A783HA7vIPLGxX0TgVwud4HKn0nc7Pf7N6vV6oZHkkX8FPG3uMfgXC0Wi2vCg/poUKGGcagQI3k7k8mcp5slcGswGDwpl8tfwGJg3xB6Dvey8vz6oH4C3iXcFYjbwiDeo1KafafkC3NjK7iL5ESFGQEUF7Sg+ifZdDp9GnMF/KGmfBdT2HCwZ7TwtrBPC7rQaav6Iv48rqZwg+F+p8hOMBj0IbxfMdMBrW5pAVGV/ztINByENkU0t5BIJEKRSOQ3Aj+Z57iFs1R5NK3EQS6HQqF1zmQdzpFWq3W42WwOTAf1er1PF2USFlC+qxMvFAr3HcexWX+QX6lUvsKpkTyPSEXJkw6MQ4S38Ljdbi8rmM/nY+CvgNcQqdH6U/xrYK9t244jZv6ByUOSiDdIfgBZ12U6dHEHu9TpdIr8F0OP692CtzaW/a6y3y0Wx5kbFHvGuXzkgf0xhKnPzA4UTyaTB8Ph8AvcHi3fnsrZ7Wore02YViqVOrRXXPhfqP8j6MYlawoAAAAASUVORK5CYII=&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
+                                <span class="text-danger field-validation-valid" data-valmsg-for="Input.Password" data-valmsg-replace="true"></span>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="Input_ConfirmPassword">Confirm password</label>
+                                <input class="form-control" placeholder="Confirm Password" type="password" data-val="true" data-val-equalto="The password and confirmation password do not match." data-val-equalto-other="*.Password" id="Input_ConfirmPassword" name="Input.ConfirmPassword" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACIUlEQVQ4EX2TOYhTURSG87IMihDsjGghBhFBmHFDHLWwSqcikk4RRKJgk0KL7C8bMpWpZtIqNkEUl1ZCgs0wOo0SxiLMDApWlgOPrH7/5b2QkYwX7jvn/uc//zl3edZ4PPbNGvF4fC4ajR5VrNvt/mo0Gr1ZPOtfgWw2e9Lv9+chX7cs64CS4Oxg3o9GI7tUKv0Q5o1dAiTfCgQCLwnOkfQOu+oSLyJ2A783HA7vIPLGxX0TgVwud4HKn0nc7Pf7N6vV6oZHkkX8FPG3uMfgXC0Wi2vCg/poUKGGcagQI3k7k8mcp5slcGswGDwpl8tfwGJg3xB6Dvey8vz6oH4C3iXcFYjbwiDeo1KafafkC3NjK7iL5ESFGQEUF7Sg+ifZdDp9GnMF/KGmfBdT2HCwZ7TwtrBPC7rQaav6Iv48rqZwg+F+p8hOMBj0IbxfMdMBrW5pAVGV/ztINByENkU0t5BIJEKRSOQ3Aj+Z57iFs1R5NK3EQS6HQqF1zmQdzpFWq3W42WwOTAf1er1PF2USFlC+qxMvFAr3HcexWX+QX6lUvsKpkTyPSEXJkw6MQ4S38Ljdbi8rmM/nY+CvgNcQqdH6U/xrYK9t244jZv6ByUOSiDdIfgBZ12U6dHEHu9TpdIr8F0OP692CtzaW/a6y3y0Wx5kbFHvGuXzkgf0xhKnPzA4UTyaTB8Ph8AvcHi3fnsrZ7Wore02YViqVOrRXXPhfqP8j6MYlawoAAAAASUVORK5CYII=&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
+                                <span class="text-danger field-validation-valid" data-valmsg-for="Input.ConfirmPassword" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="Input_CampusId">Campus</label>
+                                <select class="form-control" data-val="true" data-val-required="The Campus field is required." id="Input_CampusId" name="Input.CampusId">
+                                    <option value="">Select Value</option>
+                                    <option value="3">BU Islamabad</option>
+                                    <option value="5">asdf</option>
+                                </select>
+                                <span class="text-danger field-validation-valid" data-valmsg-for="Input.CampusId" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="Input_DeptId">Department</label>
+                                <select class="form-control" data-val="true" data-val-required="The Department field is required." id="Input_DeptId" name="Input.DeptId">
+                                    <option value="">Select Value</option>
+                                    <option value="4">Computer Science</option>
+                                    <option value="5">Business Administration</option>
+                                    <option value="6">Chemistry</option>
+                                </select>
+                                <span class="text-danger field-validation-valid" data-valmsg-for="Input.DeptId" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="Input_RoleId">Role</label>
+                                <select class="form-control" data-val="true" data-val-required="The Role field is required." id="Input_RoleId" name="Input.RoleId">
+                                    <option value="">Select Value</option>
+                                    <option value="Director">Director</option>
+                                </select>
+                                <span class="text-danger field-validation-valid" data-valmsg-for="Input.RoleId" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="Input_City">City</label>
+                                <input class="form-control" placeholder="City" type="text" data-val="true" data-val-required="The City field is required." id="Input_City" name="Input.City" value="">
+                                <span class="text-danger field-validation-valid" data-valmsg-for="Input.City" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="Input_Province">Province</label>
+                                <input class="form-control" placeholder="Province" type="text" data-val="true" data-val-required="The Province field is required." id="Input_Province" name="Input.Province" value="">
+                                <span class="text-danger field-validation-valid" data-valmsg-for="Input.Province" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="Input_Country">Country</label>
+                                <input class="form-control" placeholder="Country" type="text" data-val="true" data-val-required="The Country field is required." id="Input_Country" name="Input.Country" value="">
+                                <span class="text-danger field-validation-valid" data-valmsg-for="Input.Country" data-valmsg-replace="true"></span>
+                            </div>
+                            <button class="btn btn-success" type="submit">Create Account</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

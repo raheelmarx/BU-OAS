@@ -11,7 +11,7 @@ using OfficeAuto.Models.ViewModels;
 
 namespace OfficeAuto.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ConsultantsController : Controller
     {
         private readonly OfficeAutoDBContext _context;

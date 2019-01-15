@@ -40,12 +40,12 @@
                                 </div>
                                 <input asp-for="Input.Password" class="form-control" placeholder="Password" />
                             </div>
-                            @if (Convert.ToInt32(TempData["Attempts"]) > 3)
+                            @*@if (Convert.ToInt32(TempData["Attempts"]) > 3)
                             {
                                 <div class="input-group mb-3">
                                     <div class="g-recaptcha" data-sitekey="@ViewData["ReCaptchaKey"]"></div>
                                 </div>
-                            }
+                            }*@
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
                                     <div class="checkbox">
@@ -69,9 +69,7 @@
                 </div>
                 <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
                     <div class="card-body text-center">
-                       
-                            <img src="~/img/brand/bu_trans.png" class="img-fluid img-thumbnail"  alt="BU Logo" />
-                        
+                            <img src="~/img/brand/BU.png" class="img-fluid"  alt="BU Logo" />
                     </div>
                 </div>
             </div>
