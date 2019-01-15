@@ -26,23 +26,10 @@
 <ol class="breadcrumb">
     <li class="breadcrumb-item">Home</li>
     <li class="breadcrumb-item">
-        <a href="#">Admin</a>
+        <a href="#">Case Files</a>
     </li>
-    <li class="breadcrumb-item active">Dashboard</li>
+    <li class="breadcrumb-item active">Create Case File</li>
 
-    <li class="breadcrumb-menu d-md-down-none">
-        <div class="btn-group" role="group" aria-label="Button group">
-            <a class="btn" href="#">
-                <i class="icon-speech"></i>
-            </a>
-            <a class="btn" href="./">
-                <i class="icon-graph"></i> &nbsp;Dashboard
-            </a>
-            <a class="btn" href="#">
-                <i class="icon-settings"></i> &nbsp;Settings
-            </a>
-        </div>
-    </li>
 </ol>
 <div class="container-fluid">
 
@@ -260,48 +247,10 @@
     </div>
 </div>
 </div>
-@*<div id="myModal" class="modal fade"  role="dialog">
-        <div class="modal-dialog">
 
-
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Enclouser Attachment</h4>
-                </div>
-                <div class="modal-body">
-                    Test
-                    @await Html.PartialAsync("PartialFile.cshtml")
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-
-        </div>
-    </div>*@
-
-@*<div id="myModalPreview" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-
-        <div class="modal-content" style=" width: 850px;">
-            <div class="modal-header">
-                
-                <h4 class="modal-title">Case File - Minute Preview</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">*@
                 @await Html.PartialAsync("_PartialPreview.cshtml")
 
-            @*</div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
 
-    </div>
-</div>*@
 <div class="card">
     @await Html.PartialAsync("PartialFile.cshtml")
 </div>

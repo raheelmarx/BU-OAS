@@ -125,7 +125,7 @@ namespace OfficeAuto.Areas.Identity.Pages.Account
                 //    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                 //    return Page();
                 //}
-                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
+                //var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
                 return LocalRedirect(returnUrl);
             }
 
