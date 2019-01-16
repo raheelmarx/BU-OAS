@@ -4,8 +4,8 @@
     ViewData["Title"] = "Create";
     var refdocs = (List<OfficeAuto.Models.DB.ReferenceDoc>)ViewBag.RefDocs;
 }
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <ol class="breadcrumb">
     <li class="breadcrumb-item">Home</li>
@@ -33,245 +33,311 @@
     <div class="animated fadeIn">
         <div class="card">
             <div class="card-header">
-              Add new Minute
+                Add new Minute
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-12">
-                        <form asp-action="Create" method="post" enctype="multipart/form-data">
-                            <div class="card">
-                                <div class="form-group">
-                                    <br /><div class="col-sm-2">
 
-                                        <label asp-for="CaseTitle" class="control-label">Case File Number:</label>
-                                    </div><div class="col-sm-3">
-    <input asp-for="CaseTitle" value="BU-HRHD-2018-001" class="form-control" readonly />
-    <span asp-validation-for="CaseTitle" class="text-danger"></span>
-</div><div class="col-sm-1"></div>
-                                    <div class="col-sm-2">
+                        <div class="container-fluid table-bordered">
+                            <br />
+                            <div class="row">
+                                <br /><div class="col-sm-2">
 
-                                        <label asp-for="CaseTitle" class="control-label">File Owner:</label>
-                                    </div><div class="col-sm-3">
-                                        <input asp-for="CaseTitle" placeholder="Director IT - Rizwan Aamir" class="form-control" />
-                                        <span asp-validation-for="CaseTitle" class="text-danger"></span>
-                                    </div>
+                                    <label asp-for="CaseTitle" class="control-label">Case File Number:</label>
+                                </div><div class="col-sm-3">
+                                    <input asp-for="CaseTitle" value="BU-HRHD-2018-001" class="form-control" readonly />
+                                    <span asp-validation-for="CaseTitle" class="text-danger"></span>
+                                </div><div class="col-sm-1"></div>
+                                <div class="col-sm-2">
+
+                                    <label asp-for="CaseTitle" class="control-label">File Owner:</label>
+                                </div><div class="col-sm-3">
+                                    <input asp-for="CaseTitle" placeholder="Director IT - Rizwan Aamir" class="form-control" />
+                                    <span asp-validation-for="CaseTitle" class="text-danger"></span>
+                                </div><div class="col-sm-1"></div> <br />
+                            </div>
+                            <br />
+                            <div class="row">
+                                <br /><div class="col-sm-2">
+
+                                    <label asp-for="CaseTitle" class="control-label">Case File Title:</label>
+                                </div><div class="col-sm-3">
+                                    <input asp-for="CaseTitle" placeholder="A Case File Title - Example" class="form-control" />
+                                    <span asp-validation-for="CaseTitle" class="text-danger"></span>
                                 </div>
-                                <div class="form-group">
-                                    <br /><div class="col-sm-2">
-
-                                        <label asp-for="CaseTitle" class="control-label">Case File Title:</label>
-                                    </div><div class="col-sm-3">
-                                        <input asp-for="CaseTitle" placeholder="A Case File Title - Example" class="form-control" />
-                                        <span asp-validation-for="CaseTitle" class="text-danger"></span>
-                                    </div>
-                               <div class="col-sm-1"></div>
-                               <div class="col-sm-2">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2">
 
                                     <label asp-for="CaseTitle" class="control-label">From:</label>
                                 </div><div class="col-sm-3">
                                     <input asp-for="CaseTitle" placeholder="Director IT - Rizwan Aamir" class="form-control" />
                                     <span asp-validation-for="CaseTitle" class="text-danger"></span>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="card">
+                                </div><div class="col-sm-1"></div><br />
+                            </div> <br />
+                        </div>
+                        <br />
+                        <div style="height:400px; overflow-y: scroll">
+                            <div class="container-fluid table-bordered">
                                 <br />
-                                <div class="form-group">
-                                    <div class="col-sm-5"></div><div class="col-sm-2">
-                                        <label asp-for="MinuteTitle" class="control-label" style="align-items:center">Minute 1</label>
+                                <div class="row">
+                                    <div class="col-md-5"></div>
+                                    <div class="col-md-2">
+                                        <label asp-for="MinuteTitle" class="control-label" style="align-items:center;font-weight:bold;">Minute 1</label>
                                     </div>
-                                    <div class="col-sm-5"></div>
+                                    <div class="col-md-5"></div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-sm-1"></div>
-                                    <div class="col-sm-10">
+                                <div class="row">
+
+                                    <div class="col-md-12">
                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                                         <br />
                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-
-
-                                        <div class="col-sm-5"> <label asp-for="MinuteTitle" class="control-label" style="align-items:center">Director Finance</label></div>
-                                        <div class="col-sm-2">
-
-                                        </div>
-                                        <div class="col-sm-5"> <label asp-for="MinuteTitle" class="control-label" style="align-items:center"><span  style="align-items:center; text-decoration:underline;">Rizwan Aamir</span><br />Director (IT)<br />1/1/2019 10:15 AM</label></div>
-                                    </div>  <div class="col-sm-1"></div>
-                                </div>
-
-                                <br />
-                                <hr />
-                                <div class="form-group">
-                                    <div class="col-sm-5"></div><div class="col-sm-2">
-                                        <label asp-for="MinuteTitle" class="control-label" style="align-items:center">Minute 2</label>
                                     </div>
-                                    <div class="col-sm-5"></div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-sm-1"></div>
-                                    <div class="col-sm-10">
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-4"> <label asp-for="MinuteTitle" class="control-label" style="align-items:center;font-weight:bold; text-decoration:underline;">Director Finance</label></div>
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-4"> <label asp-for="MinuteTitle" class="control-label" style="align-items:center;font-weight:bold;"><span style="align-items:center; text-decoration:underline;">Rizwan Aamir</span><br />Director (IT)<br />1/1/2019 10:15 AM</label></div>
+
+                                </div>
+                                @*</div>*@
+
+                                <br /> <hr />
+                                @*<div class="container-fluid table-bordered">*@
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-5"></div>
+                                    <div class="col-md-2">
+                                        <label asp-for="MinuteTitle" class="control-label" style="align-items:center;font-weight:bold;">Minute 2</label>
+                                    </div>
+                                    <div class="col-md-5"></div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-12">
                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                                         <br />
                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-
-
-                                        <div class="col-sm-5"> <label asp-for="MinuteTitle" class="control-label" style="align-items:center">Director Planning &Aacute; Development</label></div>
-                                        <div class="col-sm-2">
-
-                                        </div>
-                                        <div class="col-sm-5"> <label asp-for="MinuteTitle" class="control-label" style="align-items:center"><span style="align-items:center; text-decoration:underline;">Cdre Muhammad Aslam Khan</span><br />Director Finance<br />1/2/2019 11:30 AM</label></div>
-                                    </div>  <div class="col-sm-1"></div>
-                                </div>
-                            </div>
-
-                            <div class="card">
-                                <br />
-                                <div class="form-group">
-                                    <div class="col-sm-5"></div><div class="col-sm-2">
-                                        <label asp-for="MinuteTitle" class="control-label" style="align-items:center">Minute 3</label>
-                                    </div>
-                                    <div class="col-sm-5"></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-
-                                <input asp-for="Description" id="Description" name="Description" hidden />
-
-                                @await Html.PartialAsync("_PartialCKEditor.cshtml")
-
-
-                            </div>
-
-                            <div class="card">
-                                <br />
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <div class="col-sm-2">
-                                            <label class="control-label">Enclosers</label>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-file"></i> Attach Enclosure(s)</button>
-                                        </div>
-                                    </div><div class="col-sm-12">
-
-                                        <div class="col-sm-12">
-                                            <br />
-                                            <table class="table table-responsive-sm table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Encloser #</th>
-                                                        <th>Encloser Name</th>
-                                                        <th></th>
-                                                        <th></th>
-                                                    </tr>
-                                                </thead>
-
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Encloser No 1</td>
-                                                        <td>Apress.Pro.ASP.NET.Core.MVC.2.7th.Edition.148423149X.pdf</td>
-                                                        <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10085/10089/A/Apress.Pro.ASP.NET.Core.MVC.2.7th.Edition.148423149X.pdf&quot;,&quot;Apress.Pro.ASP.NET.Core.MVC.2.7th.Edition.148423149X.pdf&quot;);">Remove</button> </td>
-                                                        <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10085/10089/A/Apress.Pro.ASP.NET.Core.MVC.2.7th.Edition.148423149X.pdf&quot;,&quot;Apress.Pro.ASP.NET.Core.MVC.2.7th.Edition.148423149X.pdf&quot;);">Add Link</button> </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Encloser No 2</td>
-                                                        <td>Doc7e17.doc</td>
-                                                        <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10085/10089/C/Doc7e17.doc&quot;,&quot;Doc7e17.doc&quot;);">Remove</button> </td>
-                                                        <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10085/10089/C/Doc7e17.doc&quot;,&quot;Doc7e17.doc&quot;);">Add Link</button> </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Encloser No 3</td>
-                                                        <td>Google_Hangouts_Tutorial.pdf</td>
-                                                        <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/A/Google_Hangouts_Tutorial.pdf&quot;,&quot;Google_Hangouts_Tutorial.pdf&quot;);">Remove</button> </td>
-                                                        <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/A/Google_Hangouts_Tutorial.pdf&quot;,&quot;Google_Hangouts_Tutorial.pdf&quot;);">Add Link</button> </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Encloser No 4</td>
-                                                        <td>Challan-form-21-05-2014.pdf</td>
-                                                        <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/A/Challan-form-21-05-2014.pdf&quot;,&quot;Challan-form-21-05-2014.pdf&quot;);">Remove</button> </td>
-                                                        <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/A/Challan-form-21-05-2014.pdf&quot;,&quot;Challan-form-21-05-2014.pdf&quot;);">Add Link</button> </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Encloser No 40</td>
-                                                        <td>OA2_1a_grammar.pdf</td>
-                                                        <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/A/OA2_1a_grammar.pdf&quot;,&quot;OA2_1a_grammar.pdf&quot;);">Remove</button> </td>
-                                                        <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/A/OA2_1a_grammar.pdf&quot;,&quot;OA2_1a_grammar.pdf&quot;);">Add Link</button> </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Encloser No 43</td>
-                                                        <td>extea7.pdf</td>
-                                                        <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/E/extea7.pdf&quot;,&quot;extea7.pdf&quot;);">Remove</button> </td>
-                                                        <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/E/extea7.pdf&quot;,&quot;extea7.pdf&quot;);">Add Link</button> </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Encloser No 6</td>
-                                                        <td>3264_oneworlderenewal_18_19.pdf</td>
-                                                        <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/B/3264_oneworlderenewal_18_19.pdf&quot;,&quot;3264_oneworlderenewal_18_19.pdf&quot;);">Remove</button> </td>
-                                                        <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/B/3264_oneworlderenewal_18_19.pdf&quot;,&quot;3264_oneworlderenewal_18_19.pdf&quot;);">Add Link</button> </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Encloser No 7</td>
-                                                        <td>3267_renewalloophex_2018_19.pdf</td>
-                                                        <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/B/3267_renewalloophex_2018_19.pdf&quot;,&quot;3267_renewalloophex_2018_19.pdf&quot;);">Remove</button> </td>
-                                                        <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/B/3267_renewalloophex_2018_19.pdf&quot;,&quot;3267_renewalloophex_2018_19.pdf&quot;);">Add Link</button> </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-
-                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                          
-                            <div class="card">
-                                <div class="form-group">
-                                    <br><div class="col-sm-2">
-                                        <label class="control-label" for="AssignedTo">To</label>
-                                    </div><div class="col-sm-10">
-                                        <select id="demo" class="form-control" multiple="multiple">
-                                            <optgroup label="Department">
-                                                <option value="Deputy Manager">Deputy Manager - Asim Abbas</option>
-                                                <option value="System Analyst">System Analyst - Aurangzeb Khan</option>
-                                                <option value="Team Lead">Team Lead - Muhammad Sajjad</option>
-                                                <option value="Software Developer">Software Developer - Raheel Ahmad</option>
-                                                <option value="Software Developer">Software Developer - Saqlain Arif</option>
-                                                <option value="Technical Writer">Technical Writer - Saad Hameed</option>
-                                            </optgroup>
-                                            <optgroup label="Directors">
-                                                <option value="Director Finance">Director Finance - Cdre M. Aslam</option>
-                                                <option value="Director IT">Director IT - Rizwan Aamir</option>
-                                                <option value="Director QA">Director QA - A. Wahab</option>
-                                                <option value="Director HR">Director HR - Farooq Ahmed</option>
-                                            </optgroup>
-                                            <optgroup label="Top Management">
-                                                <option value="Registrar">Registrar - Cdre Muhammad Hashim</option>
-                                                <option value="Pro-Rector">Pro-Rector - R/Adm Nisar Mahmood</option>
-                                                <option value="Rector">Rector - V/Adm Muhammad Shafiq</option>
-                                            </optgroup>
-                                        </select>
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-4"> <label asp-for="MinuteTitle" class="control-label" style="align-items:center;font-weight:bold; text-decoration:underline;">Director Planning & Development</label></div>
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-4"> <label asp-for="MinuteTitle" class="control-label" style="align-items:center;font-weight:bold;"><span style="align-items:center; text-decoration:underline;">Cdre Muhammad Aslam Khan</span><br />Director Finance<br />1/2/2019 11:30 AM</label></div>
 
-                                        <span asp-validation-for="AssignedTo" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <br />
+                        </div>   <br />   <br />
+
+                        <div class="container-fluid">
+                            <br />
+                            <div class="row">
+                                <div class="col-sm-5"></div><div class="col-sm-2">
+                                    <label asp-for="MinuteTitle" class="control-label" style="align-items:center; font-weight:bold;">Minute 3</label>
+                                </div>
+                                <div class="col-sm-5"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <input asp-for="Description" id="Description" name="Description" hidden />
+
+                            @await Html.PartialAsync("_PartialCKEditor.cshtml")
+
+
+                        </div>
+
+                        @*according*@
+                        <div id="accordion">
+                            <div class="card">
+
+
+
+
+                                <div class="card-header" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                            <span style="font-size:115%;">Enclosures</span>
+
+
+                                        </button>
+                                        <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-file"></i> Attach Enclosure(s)</button>
+
+                                    </h5>
+
+                                </div>
+
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <table class="table table-responsive-sm table-bordered table-condensed table-sm  table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Encloser #</th>
+                                                    <th>Encloser Name</th>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr>
+                                                    <td>Encloser No 1</td>
+                                                    <td>Apress.Pro.ASP.NET.Core.MVC.2.7th.Edition.148423149X.pdf</td>
+                                                    <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10085/10089/A/Apress.Pro.ASP.NET.Core.MVC.2.7th.Edition.148423149X.pdf&quot;,&quot;Apress.Pro.ASP.NET.Core.MVC.2.7th.Edition.148423149X.pdf&quot;);">Remove</button> </td>
+                                                    <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10085/10089/A/Apress.Pro.ASP.NET.Core.MVC.2.7th.Edition.148423149X.pdf&quot;,&quot;Apress.Pro.ASP.NET.Core.MVC.2.7th.Edition.148423149X.pdf&quot;);">Add Link</button> </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Encloser No 2</td>
+                                                    <td>Doc7e17.doc</td>
+                                                    <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10085/10089/C/Doc7e17.doc&quot;,&quot;Doc7e17.doc&quot;);">Remove</button> </td>
+                                                    <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10085/10089/C/Doc7e17.doc&quot;,&quot;Doc7e17.doc&quot;);">Add Link</button> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Encloser No 3</td>
+                                                    <td>Google_Hangouts_Tutorial.pdf</td>
+                                                    <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/A/Google_Hangouts_Tutorial.pdf&quot;,&quot;Google_Hangouts_Tutorial.pdf&quot;);">Remove</button> </td>
+                                                    <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/A/Google_Hangouts_Tutorial.pdf&quot;,&quot;Google_Hangouts_Tutorial.pdf&quot;);">Add Link</button> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Encloser No 4</td>
+                                                    <td>Challan-form-21-05-2014.pdf</td>
+                                                    <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/A/Challan-form-21-05-2014.pdf&quot;,&quot;Challan-form-21-05-2014.pdf&quot;);">Remove</button> </td>
+                                                    <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/A/Challan-form-21-05-2014.pdf&quot;,&quot;Challan-form-21-05-2014.pdf&quot;);">Add Link</button> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Encloser No 40</td>
+                                                    <td>OA2_1a_grammar.pdf</td>
+                                                    <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/A/OA2_1a_grammar.pdf&quot;,&quot;OA2_1a_grammar.pdf&quot;);">Remove</button> </td>
+                                                    <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/A/OA2_1a_grammar.pdf&quot;,&quot;OA2_1a_grammar.pdf&quot;);">Add Link</button> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Encloser No 43</td>
+                                                    <td>extea7.pdf</td>
+                                                    <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/E/extea7.pdf&quot;,&quot;extea7.pdf&quot;);">Remove</button> </td>
+                                                    <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/E/extea7.pdf&quot;,&quot;extea7.pdf&quot;);">Add Link</button> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Encloser No 6</td>
+                                                    <td>3264_oneworlderenewal_18_19.pdf</td>
+                                                    <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/B/3264_oneworlderenewal_18_19.pdf&quot;,&quot;3264_oneworlderenewal_18_19.pdf&quot;);">Remove</button> </td>
+                                                    <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/B/3264_oneworlderenewal_18_19.pdf&quot;,&quot;3264_oneworlderenewal_18_19.pdf&quot;);">Add Link</button> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Encloser No 7</td>
+                                                    <td>3267_renewalloophex_2018_19.pdf</td>
+                                                    <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/B/3267_renewalloophex_2018_19.pdf&quot;,&quot;3267_renewalloophex_2018_19.pdf&quot;);">Remove</button> </td>
+                                                    <td><button type="button" class="btn btn-link" onclick="checkFluency(&quot;ReferenceDocs/Cases/10080/10084/B/3267_renewalloophex_2018_19.pdf&quot;,&quot;3267_renewalloophex_2018_19.pdf&quot;);">Add Link</button> </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group pull-right">
-                                <button type="submit" value="Release" class="btn btn-primary"> <i class="fa fa-send"></i> Release</button>
-                                <button type="submit" value="DFA" class="btn btn-secondary"> <i class="fa fa-reply"></i> DFA</button>
-                                <button type="submit" value="Save & Close" class="btn btn-success" onclick="GetHtml();"> <i class="fa fa-save"></i> Save & Close</button>
-                                <button type="submit" value="Preview" class="btn btn-linkedin"> <i class="fa fa-eye"></i> Preview</button>
-                                <button type="submit" value="Preview" class="btn btn-linkedin"> <i class="fa fa-eye"></i> Not Approved</button>
-                                <button type="submit" value="Preview" class="btn btn-linkedin"> <i class="fa fa-eye"></i> Approved</button>
-                                <button type="submit" value="Discard" class="btn btn-danger"> <i class="fa fa-trash"></i> Seen</button>
+                        </div>
+
+                        @*accordin ends here*@
+
+                        <div class="container-fluid table-bordered">
+                            <br />
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label class="control-label" for="AssignedTo">To</label>
+                                </div>
+                                <div class="col-md-10">
+
+                                    <select id="demo" class="form-control" multiple="multiple">
+                                        <optgroup label="Department">
+                                            <option value="Deputy Manager">Deputy Manager - Asim Abbas</option>
+                                            <option value="System Analyst">System Analyst - Aurangzeb Khan</option>
+                                            <option value="Team Lead">Team Lead - Muhammad Sajjad</option>
+                                            <option value="Software Developer">Software Developer - Raheel Ahmad</option>
+                                            <option value="Software Developer">Software Developer - Saqlain Arif</option>
+                                            <option value="Technical Writer">Technical Writer - Saad Hameed</option>
+                                        </optgroup>
+                                        <optgroup label="Directors">
+                                            <option value="Director Finance">Director Finance - Cdre M. Aslam</option>
+                                            <option value="Director IT">Director IT - Rizwan Aamir</option>
+                                            <option value="Director QA">Director QA - A. Wahab</option>
+                                            <option value="Director HR">Director HR - Farooq Ahmed</option>
+                                        </optgroup>
+                                        <optgroup label="Top Management">
+                                            <option value="Registrar">Registrar - Cdre Muhammad Hashim</option>
+                                            <option value="Pro-Rector">Pro-Rector - R/Adm Nisar Mahmood</option>
+                                            <option value="Rector">Rector - V/Adm Muhammad Shafiq</option>
+                                        </optgroup>
+                                    </select>
+
+
+                                </div>
                             </div>
+                            <br />
+                        </div> <br />
+                        <div class="container-fluid">
 
-                        </form>
+                            <div class="row pull-right">
+                                <button type="submit" value="Release" class="btn btn-primary"> <i class="fa fa-send"></i> Release</button>&nbsp;
+                                <button type="submit" value="DFA" class="btn btn-secondary"> <i class="fa fa-reply"></i> DFA</button>&nbsp;
+                                <button type="submit" value="Save & Close" class="btn btn-success" onclick="GetHtml();"> <i class="fa fa-save"></i> Save & Close</button>&nbsp;
 
-                     
+                                <button type="button" value="Preview" class="btn btn-linkedin" data-toggle="modal" data-target="#myModalPreview"><i class="fa fa-eye"></i> Preview</button>&nbsp;
+                                <button type="submit" value="Discard" class="btn btn-danger"> <i class="fa fa-trash"></i> Discard</button>&nbsp;
+                            </div>
+                            <br />
+                        </div>
+                        <br />
 
+
+                        <div class="container-fluid table-bordered">
+
+
+                            <br /><div class="col-md-12">
+
+                                <label asp-for="CaseTitle" class="control-label" style="font-weight:bold; font-size:large;">Case File Release Pipeline:</label>
+                            </div>
+                            <div class="container-fluid table-bordered">
+                                <div class="row">
+                                    <ul id="tree1">
+
+                                        <li>
+                                            <input type="checkbox" name="name" value="" checked />
+                                            <a href="#">(Director IT) - (Rizwan Aamir) - Owner</a>
+                                            <ul>
+                                                <li>
+                                                    <input type="checkbox" name="name" value="" checked />Director Finance - (Cdre Muhammad Aslam Khan SI/(M) (Retd))
+                                                    <ul>
+                                                        <li>
+                                                            <input type="checkbox" name="name" value="" checked />Director QA - Abdul Wahab
+
+                                                        </li>
+
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="name" value="" />Director HR - (Capt Farooq Ahmed)
+
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="name" value="" />Registrar - (Cmdr Muhammad Hashim SI/(M)(Retd))
+
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                            </div><br />
+                        </div>
 
 
                     </div>
@@ -281,7 +347,9 @@
         </div>
     </div>
 </div>
- <div class="card">
+@await Html.PartialAsync("_PartialPreviewMinute.cshtml")
+
+<div class="card">
     @await Html.PartialAsync("PartialFile.cshtml")
 </div>
 <script>
@@ -321,4 +389,3 @@
 
 
 </script>
-
