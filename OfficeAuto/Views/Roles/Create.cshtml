@@ -1,8 +1,10 @@
 ﻿@model OfficeAuto.Models.ViewModels.RoleViewModel
 
 <ol class="breadcrumb">
-    <li class="breadcrumb-item">Home</li>
     <li class="breadcrumb-item">
+        <i class="fa fa-home" aria-hidden="true"></i>
+        <a asp-action="Index" asp-controller="Home">Home</a>
+    </li>    <li class="breadcrumb-item">
         <a asp-action="">Roles</a>
     </li>
     <li class="breadcrumb-item active">Create Role</li>
@@ -32,9 +34,9 @@
                             <div class="form-group">
                                 <label class="control-label" for="DeptId">Department</label>
                                 <select class="form-control" data-val="true" data-val-required="The Department field is required." id="DeptId" name="DeptId">
-                                    <option value="4">Computer Science</option>
-                                    <option value="5">Business Administration</option>
-                                    <option value="6">Chemistry</option>
+                                    <option value="4">DIT</option>
+                                    <option value="5">Finance</option>
+                                    <option value="6">Planning and Development</option>
                                 </select>
                                 <span class="text-danger field-validation-valid" data-valmsg-for="DeptId" data-valmsg-replace="true"></span>
                             </div>
