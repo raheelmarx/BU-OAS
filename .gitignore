@@ -17,3 +17,10 @@
 *.ide-shm
 .vs/OfficeAuto/v15/Server/sqlite3/storage.ide-wal
 *.ide-wal
+*.ide
+*.ide-shm
+*.ide
+*.ide-wal
+.vs/OfficeAuto/v15/Server/sqlite3/storage.ide-wal
+.vs/OfficeAuto/v15/Server/sqlite3/storage.ide-shm
+.vs/OfficeAuto/v15/Server/sqlite3/storage.ide

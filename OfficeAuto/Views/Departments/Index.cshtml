@@ -5,12 +5,11 @@
 }
 
 
-
-
-
 <ol class="breadcrumb">
-    <li class="breadcrumb-item">Home</li>
-    <li class="breadcrumb-item active">Departments</li>
+    <li class="breadcrumb-item">
+        <i class="fa fa-home" aria-hidden="true"></i>
+        <a asp-action="Index" asp-controller="Home">Home</a>
+    </li>    <li class="breadcrumb-item active">Departments</li>
 
     
 </ol>
@@ -34,7 +33,7 @@
                                         Name
                                     </th>
                                     <th>
-                                        DeptCode
+                                        Department Code
                                     </th>
                                     <th>
                                         Campus
@@ -45,12 +44,12 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        Computer Science
+                                        DIT
                                     </td>
                                     <td>
-                                        CS-02
+                                        HO-DIT
                                     </td>
-                                    <td>BU Islamabad</td>
+                                    <td>Head Office</td>
                                     <td>
                                         <a class="btn btn-info" href="/Departments/Edit/4"><i class="fa fa-edit"></i></a>
                                         <a onclick="return confirm('Are you sure want to delete this?');" class="btn btn-danger" href="#"><i class="fa fa-trash-o"></i></a>
@@ -58,12 +57,12 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Business Administration
+                                        Finance
                                     </td>
                                     <td>
-                                        BB-03
+                                       HO-FN
                                     </td>
-                                    <td>BU Islamabad</td>
+                                    <td>Head Office</td>
                                     <td>
                                         <a class="btn btn-info" href="/Departments/Edit/5"><i class="fa fa-edit"></i></a>
                                         <a onclick="return confirm('Are you sure want to delete this?');" class="btn btn-danger" href="#"><i class="fa fa-trash-o"></i></a>
@@ -71,12 +70,25 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Chemistry
+                                        Quality Assurance
                                     </td>
                                     <td>
-                                        ch-54
+                                        HO-QA
                                     </td>
-                                    <td>BU Islamabad</td>
+                                    <td>Head Office</td>
+                                    <td>
+                                        <a class="btn btn-info" href="/Departments/Edit/6"><i class="fa fa-edit"></i></a>
+                                        <a onclick="return confirm('Are you sure want to delete this?');" class="btn btn-danger" href="#"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Planning and Development
+                                    </td>
+                                    <td>
+                                        HO-PD
+                                    </td>
+                                    <td>Head Office</td>
                                     <td>
                                         <a class="btn btn-info" href="/Departments/Edit/6"><i class="fa fa-edit"></i></a>
                                         <a onclick="return confirm('Are you sure want to delete this?');" class="btn btn-danger" href="#"><i class="fa fa-trash-o"></i></a>

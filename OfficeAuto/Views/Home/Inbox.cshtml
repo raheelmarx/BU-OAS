@@ -2,25 +2,31 @@
     ViewData["Title"] = "Inbox";
 }
 <ol class="breadcrumb">
-    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item">
+        <i class="fa fa-home" aria-hidden="true"></i>
+        <a asp-action="Index">Home</a>
+    </li>
     <li class="breadcrumb-item">
         <a href="#">Case Files</a>
     </li>
     <li class="breadcrumb-item active">Inbox</li>
 
-    
+
 </ol>
 <div class="container-fluid">
 
     <div class="animated fadeIn">
         <div class="card">
             <div class="card-header">
-                <h3>Inbox</h3>
+                <h3 class="float-left">Inbox</h3>
+                <div class="card-header-actions float-right">
+                    <a asp-action="Index" class="btn btn-sm btn-success">Back to Home</a>
+                </div>
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="card">
+                        @*<div class="card">
                             <form method="post">
                                 <div class="row m-2">
                                     <div class="col-md-6">
@@ -51,7 +57,7 @@
                                     </div>
                                 </div>
                             </form>
-                        </div>
+                        </div>*@
                         <table id="dataTables" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
@@ -78,10 +84,10 @@
                                         <a href="#"> BU-EXM-2018-001</a>
                                     </td>
                                     <td>
-                                        Upgrade exam system
+                                        Upgrade exam system 1
                                     </td>
-                                    <td><a href="#">Director Exam (John Doe)</a></td>
-                                    <td>John Doe</td>
+                                    <td><a href="#">Director Exam (Cdre Asim Raza)</a></td>
+                                    <td>Cdre Asim Raza</td>
                                     <td>12-Dec-2018 9:15 AM</td>
                                     <td>Normal</td>
                                     <td>Open</td>
@@ -92,26 +98,26 @@
                                         <a href="#"> BU-EXM-2018-001</a>
                                     </td>
                                     <td>
-                                        Upgrade exam system
+                                        Upgrade exam system 2
                                     </td>
-                                    <td><a href="#">Director Exam (John Doe)</a></td>
-                                    <td>John Doe</td>
+                                    <td><a href="#">Director Exam (Cdre Asim Raza)</a></td>
+                                    <td>Cdre Asim Raza</td>
                                     <td>12-Dec-2018 9:15 AM</td>
                                     <td>Normal</td>
                                     <td>Open</td>
                                     <td><a asp-controller="Timeline" asp-action="Option2">History</a></td>
                                 </tr>
-                                <tr>
+                                <tr class="table-danger">
                                     <td>
                                         <a href="#"> BU-EXM-2018-001</a>
                                     </td>
                                     <td>
-                                        Upgrade exam system
+                                        Upgrade exam system 3
                                     </td>
-                                    <td><a href="#">Director Exam (John Doe)</a></td>
-                                    <td>John Doe</td>
+                                    <td><a href="#">Director Exam (Cdre Asim Raza)</a></td>
+                                    <td>Cdre Asim Raza</td>
                                     <td>12-Dec-2018 9:15 AM</td>
-                                    <td>Normal</td>
+                                    <td>Immediate</td>
                                     <td>Open</td>
                                     <td><a asp-controller="Timeline" asp-action="Option3">History</a></td>
                                 </tr>
@@ -120,10 +126,10 @@
                                         <a href="#"> BU-EXM-2018-001</a>
                                     </td>
                                     <td>
-                                        Upgrade exam system
+                                        Upgrade exam system 4
                                     </td>
-                                    <td><a href="#">Director Exam (John Doe)</a></td>
-                                    <td>John Doe</td>
+                                    <td><a href="#">Director Exam (Cdre Asim Raza)</a></td>
+                                    <td>Cdre Asim Raza</td>
                                     <td>12-Dec-2018 9:15 AM</td>
                                     <td>Normal</td>
                                     <td>Open</td>
@@ -134,10 +140,24 @@
                                         <a href="#"> BU-EXM-2018-001</a>
                                     </td>
                                     <td>
-                                        Upgrade exam system
+                                        Upgrade exam system 6
                                     </td>
-                                    <td><a href="#">Director Exam (John Doe)</a></td>
-                                    <td>John Doe</td>
+                                    <td><a href="#">Director Exam (Cdre Asim Raza)</a></td>
+                                    <td>Cdre Asim Raza</td>
+                                    <td>12-Dec-2018 9:15 AM</td>
+                                    <td>Normal</td>
+                                    <td>Open</td>
+                                    <td><a href="#">History</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="#"> BU-EXM-2018-001</a>
+                                    </td>
+                                    <td>
+                                        Upgrade exam system 7
+                                    </td>
+                                    <td><a href="#">Director Exam (Cdre Asim Raza)</a></td>
+                                    <td>Cdre Asim Raza</td>
                                     <td>12-Dec-2018 9:15 AM</td>
                                     <td>Normal</td>
                                     <td>Open</td>
@@ -150,8 +170,36 @@
                                     <td>
                                         Upgrade exam system
                                     </td>
-                                    <td><a href="#">Director Exam (John Doe)</a></td>
-                                    <td>John Doe</td>
+                                    <td><a href="#">Director Exam (Cdre Asim Raza)</a></td>
+                                    <td>Cdre Asim Raza</td>
+                                    <td>12-Dec-2018 9:15 AM</td>
+                                    <td>Normal</td>
+                                    <td>Open</td>
+                                    <td><a href="#">History</a></td>
+                                </tr>
+                                <tr class="table-danger">
+                                    <td>
+                                        <a href="#"> BU-EXM-2018-001</a>
+                                    </td>
+                                    <td>
+                                        Upgrade exam system 8
+                                    </td>
+                                    <td><a href="#">Director Exam (Cdre Asim Raza)</a></td>
+                                    <td>Cdre Asim Raza</td>
+                                    <td>12-Dec-2018 9:15 AM</td>
+                                    <td>Immediate</td>
+                                    <td>Open</td>
+                                    <td><a href="#">History</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="#"> BU-EXM-2018-001</a>
+                                    </td>
+                                    <td>
+                                        Upgrade exam system 9
+                                    </td>
+                                    <td><a href="#">Director Exam (Cdre Asim Raza)</a></td>
+                                    <td>Cdre Asim Raza</td>
                                     <td>12-Dec-2018 9:15 AM</td>
                                     <td>Normal</td>
                                     <td>Open</td>
@@ -162,10 +210,10 @@
                                         <a href="#"> BU-EXM-2018-001</a>
                                     </td>
                                     <td>
-                                        Upgrade exam system
+                                        Upgrade exam system 10
                                     </td>
-                                    <td><a href="#">Director Exam (John Doe)</a></td>
-                                    <td>John Doe</td>
+                                    <td><a href="#">Director Exam (Cdre Asim Raza)</a></td>
+                                    <td>Cdre Asim Raza</td>
                                     <td>12-Dec-2018 9:15 AM</td>
                                     <td>Normal</td>
                                     <td>Open</td>
@@ -176,10 +224,24 @@
                                         <a href="#"> BU-EXM-2018-001</a>
                                     </td>
                                     <td>
-                                        Upgrade exam system
+                                        Upgrade exam system 11
                                     </td>
-                                    <td><a href="#">Director Exam (John Doe)</a></td>
-                                    <td>John Doe</td>
+                                    <td><a href="#">Director Exam (Cdre Asim Raza)</a></td>
+                                    <td>Cdre Asim Raza</td>
+                                    <td>12-Dec-2018 9:15 AM</td>
+                                    <td>Normal</td>
+                                    <td>Open</td>
+                                    <td><a href="#">History</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="#"> BU-EXM-2018-001</a>
+                                    </td>
+                                    <td> 
+                                        Upgrade exam system 12
+                                    </td>
+                                    <td><a href="#">Director Exam (Cdre Asim Raza)</a></td>
+                                    <td>Cdre Asim Raza</td>
                                     <td>12-Dec-2018 9:15 AM</td>
                                     <td>Normal</td>
                                     <td>Open</td>
@@ -190,10 +252,10 @@
                                         <a href="#"> BU-EXM-2018-001</a>
                                     </td>
                                     <td>
-                                        Upgrade exam system
+                                        Upgrade exam system 13
                                     </td>
-                                    <td><a href="#">Director Exam (John Doe)</a></td>
-                                    <td>John Doe</td>
+                                    <td><a href="#">Director Exam (Cdre Asim Raza)</a></td>
+                                    <td>Cdre Asim Raza</td>
                                     <td>12-Dec-2018 9:15 AM</td>
                                     <td>Normal</td>
                                     <td>Open</td>
@@ -204,66 +266,10 @@
                                         <a href="#"> BU-EXM-2018-001</a>
                                     </td>
                                     <td>
-                                        Upgrade exam system
+                                        Upgrade exam system 14
                                     </td>
-                                    <td><a href="#">Director Exam (John Doe)</a></td>
-                                    <td>John Doe</td>
-                                    <td>12-Dec-2018 9:15 AM</td>
-                                    <td>Normal</td>
-                                    <td>Open</td>
-                                    <td><a href="#">History</a></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="#"> BU-EXM-2018-001</a>
-                                    </td>
-                                    <td>
-                                        Upgrade exam system
-                                    </td>
-                                    <td><a href="#">Director Exam (John Doe)</a></td>
-                                    <td>John Doe</td>
-                                    <td>12-Dec-2018 9:15 AM</td>
-                                    <td>Normal</td>
-                                    <td>Open</td>
-                                    <td><a href="#">History</a></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="#"> BU-EXM-2018-001</a>
-                                    </td>
-                                    <td>
-                                        Upgrade exam system
-                                    </td>
-                                    <td><a href="#">Director Exam (John Doe)</a></td>
-                                    <td>John Doe</td>
-                                    <td>12-Dec-2018 9:15 AM</td>
-                                    <td>Normal</td>
-                                    <td>Open</td>
-                                    <td><a href="#">History</a></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="#"> BU-EXM-2018-001</a>
-                                    </td>
-                                    <td>
-                                        Upgrade exam system
-                                    </td>
-                                    <td><a href="#">Director Exam (John Doe)</a></td>
-                                    <td>John Doe</td>
-                                    <td>12-Dec-2018 9:15 AM</td>
-                                    <td>Normal</td>
-                                    <td>Open</td>
-                                    <td><a href="#">History</a></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="#"> BU-EXM-2018-001</a>
-                                    </td>
-                                    <td>
-                                        Upgrade exam system
-                                    </td>
-                                    <td><a href="#">Director Exam (John Doe)</a></td>
-                                    <td>John Doe</td>
+                                    <td><a href="#">Director Exam (Cdre Asim Raza)</a></td>
+                                    <td>Cdre Asim Raza</td>
                                     <td>12-Dec-2018 9:15 AM</td>
                                     <td>Normal</td>
                                     <td>Open</td>

@@ -2,20 +2,22 @@
     ViewData["Title"] = "Timeline";
 }
 <ol class="breadcrumb">
-    <li class="breadcrumb-item">Home</li>
     <li class="breadcrumb-item">
-        <a href="#">Case Files</a>
+        <i class="fa fa-home" aria-hidden="true"></i>
+        <a asp-action="Index" asp-controller="Home">Home</a>
     </li>
-    <li class="breadcrumb-item active">Inbox</li>
-
-
+    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Inbox">Inbox</a></li>
+    <li class="breadcrumb-item active">History</li>
 </ol>
 <div class="container-fluid">
 
     <div class="animated fadeIn">
         <div class="card">
             <div class="card-header">
-                <h3>History</h3>
+                <h3 class="float-left">History</h3>
+                <div class="card-header-actions float-right">
+                    <a asp-action="Index" asp-controller="Home" class="btn btn-sm btn-success">Back to Home</a>
+                </div>
             </div>
             <div class="card-body">
                 <div class="row">
