@@ -128,7 +128,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-1"></div>
-                                    <div class="col-md-4"> <label asp-for="MinuteTitle" class="control-label" style="align-items:center;font-weight:bold; text-decoration:underline;">Director Planning &Aacute; Development</label></div>
+                                    <div class="col-md-4"> <label asp-for="MinuteTitle" class="control-label" style="align-items:center;font-weight:bold; text-decoration:underline;">Director Planning & Development</label></div>
                                     <div class="col-md-3"></div>
                                     <div class="col-md-4"> <label asp-for="MinuteTitle" class="control-label" style="align-items:center;font-weight:bold;"><span style="align-items:center; text-decoration:underline;">Cdre Muhammad Aslam Khan</span><br />Director Finance<br />1/2/2019 11:30 AM</label></div>
 
@@ -299,67 +299,55 @@
 
                         <div class="container-fluid table-bordered">
 
-                            <div class="row">
 
-                                <ul id="tree1">
+                            <br /><div class="col-md-12">
 
-                                    <li>
-                                        <a href="#">TECH</a>
-                                        <ul>
-                                            <li> <input type="checkbox" name="name" value="" />Company Maintenance</li>
-                                            <li>
-                                                Employees
-                                                <ul>
-                                                    <li>
-                                                        Reports
-                                                        <ul>
-                                                            <li>Report1</li>
-                                                            <li>Report2</li>
-                                                            <li>Report3</li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>Employee Maint.</li>
-                                                </ul>
-                                            </li>
-                                            <li>Human Resources</li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        XRP
-                                        <ul>
-                                            <li>Company Maintenance</li>
-                                            <li>
-                                                Employees
-                                                <ul>
-                                                    <li>
-                                                        Reports
-                                                        <ul>
-                                                            <li>Report1</li>
-                                                            <li>Report2</li>
-                                                            <li>Report3</li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>Employee Maint.</li>
-                                                </ul>
-                                            </li>
-                                            <li>Human Resources</li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                                <label asp-for="CaseTitle" class="control-label" style="font-weight:bold; font-size:large;">Case File Release Pipeline:</label>
                             </div>
+                            <div class="container-fluid table-bordered">
+                                <div class="row">
+                                    <ul id="tree1">
 
+                                        <li>
+                                            <input type="checkbox" name="name" value="" checked />
+                                            <a href="#">(Director IT) - (Rizwan Aamir) - Owner</a>
+                                            <ul>
+                                                <li>
+                                                    <input type="checkbox" name="name" value="" checked />Director Finance - (Cdre Muhammad Aslam Khan SI/(M) (Retd))
+                                                    <ul>
+                                                        <li>
+                                                            <input type="checkbox" name="name" value="" checked />Director QA - Abdul Wahab
 
+                                                        </li>
+
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="name" value="" />Director HR - (Capt Farooq Ahmed)
+
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="name" value="" />Registrar - (Cmdr Muhammad Hashim SI/(M)(Retd))
+
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                            </div><br />
                         </div>
 
 
                     </div>
-                    </div>
+                </div>
 
             </div>
         </div>
     </div>
 </div>
-@await Html.PartialAsync("_PartialPreview.cshtml")
+@await Html.PartialAsync("_PartialPreviewMinute.cshtml")
 
 <div class="card">
     @await Html.PartialAsync("PartialFile.cshtml")

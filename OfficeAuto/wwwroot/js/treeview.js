@@ -1,12 +1,12 @@
 ﻿    $.fn.extend({
         treed: function (o) {
 
-            var openedClass = 'glyphicon-minus-sign';
+            var closededClass = 'glyphicon-minus-sign';
     var closedClass = 'glyphicon-plus-sign';
 
             if (typeof o != 'undefined') {
-                if (typeof o.openedClass != 'undefined') {
-        openedClass = o.openedClass;
+                if (typeof o.closededClass != 'undefined') {
+        closededClass = o.closededClass;
     }
                 if (typeof o.closedClass != 'undefined') {
         closedClass = o.closedClass;
@@ -23,7 +23,7 @@ tree.addClass("tree");
                 branch.on('click', function (e) {
                     if (this == e.target) {
                         var icon = $(this).children('i:first');
-    icon.toggleClass(openedClass + " " + closedClass);
+    icon.toggleClass(closededClass + " " + closedClass);
     $(this).children().children().toggle();
 }
 })
@@ -35,14 +35,14 @@ branch.children().children().toggle();
             $(this).closest('li').click();
         });
     });
-    //fire event to open branch if the li contains an anchor instead of text
+    //fire event to closed branch if the li contains an anchor instead of text
             tree.find('.branch>a').each(function () {
         $(this).on('click', function (e) {
             $(this).closest('li').click();
             e.preventDefault();
         });
     });
-    //fire event to open branch if the li contains a button instead of text
+    //fire event to closed branch if the li contains a button instead of text
             tree.find('.branch>button').each(function () {
         $(this).on('click', function (e) {
             $(this).closest('li').click();
