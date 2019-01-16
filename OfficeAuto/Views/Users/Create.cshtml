@@ -4,8 +4,10 @@
 
 
 <ol class="breadcrumb">
-    <li class="breadcrumb-item">Home</li>
     <li class="breadcrumb-item">
+        <i class="fa fa-home" aria-hidden="true"></i>
+        <a asp-action="Index" asp-controller="Home">Home</a>
+    </li>    <li class="breadcrumb-item">
         <a asp-action="Index">Users</a>
     </li>
     <li class="breadcrumb-item active">Create User</li>
@@ -67,7 +69,8 @@
                                 <select class="form-control" data-val="true" data-val-required="The Campus field is required." id="Input_CampusId" name="Input.CampusId">
                                     <option value="">Select Value</option>
                                     <option value="3">BU Islamabad</option>
-                                    <option value="5">asdf</option>
+                                    <option value="5">BU Lahore</option>
+                                    <option value="3">BU Karachi</option>
                                 </select>
                                 <span class="text-danger field-validation-valid" data-valmsg-for="Input.CampusId" data-valmsg-replace="true"></span>
                             </div>

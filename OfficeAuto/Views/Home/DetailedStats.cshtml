@@ -2,11 +2,11 @@
     ViewData["Title"] = "Detailed Statistics";
 }
 <ol class="breadcrumb">
-    <li class="breadcrumb-item">Home</li>
     <li class="breadcrumb-item">
-        <a href="#">Admin</a>
+        <i class="fa fa-home" aria-hidden="true"></i>
+        <a asp-action="Index">Home</a>
     </li>
-    <li class="breadcrumb-item active">Dashboard</li>
+    <li class="breadcrumb-item active">Detailed Statistics</li>
 
 
 </ol>
@@ -15,7 +15,10 @@
     <div class="animated fadeIn">
         <div class="card">
             <div class="card-header">
-                <h3>Detailed Statistics</h3>
+                <h3 class="float-left">Detailed Statistics</h3>
+                <div class="card-header-actions float-right">
+                    <a asp-action="Index" class="btn btn-sm btn-success">Back to Home</a>
+                </div>
             </div>
 
             <div class="card-body">
@@ -64,7 +67,7 @@
                                         <a asp-action="DFAReceived">4</a>
                                     </td>
                                     <td>
-                                        <a href="#"> 0</a>
+                                        <a asp-action="Drafts">1</a>
                                     </td>
                                     <td>
                                         <a href="#">10</a>
@@ -124,7 +127,6 @@
                             </tbody>
 
                         </table>
-                        <a asp-action="Index" class="float-right">Back to Home</a>
                     </div>
                 </div>
 

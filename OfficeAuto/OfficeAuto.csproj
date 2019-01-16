@@ -101,9 +101,6 @@
     <Content Update="Views\MockUps\_PartialCKEditor.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\MockUps\_PartialPreviewMinute.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
   </ItemGroup>
 
 </Project>

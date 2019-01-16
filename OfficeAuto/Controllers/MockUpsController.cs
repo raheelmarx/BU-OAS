@@ -45,5 +45,10 @@ namespace OfficeAuto.Controllers
         {
             return View();
         }
+
+        public IActionResult CreateCase1()
+        {
+            return View();
+        }
     }
 }
