@@ -10,7 +10,7 @@ using OfficeAuto.Models.ViewModels;
 
 namespace OfficeAuto.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class RolesController : Controller
     {
         private RoleManager<ApplicationRole> _roleManager;
@@ -26,12 +26,12 @@ namespace OfficeAuto.Controllers
        
 
         public IActionResult Index()
-        {
-            return View(_roleManager.Roles);
+        {//_roleManager.Roles
+            return View();
         }
         public IActionResult Create()
         {
-            ViewData["Departments"] = new SelectList(_context.Departments, "Id", "Name");
+           // ViewData["Departments"] = new SelectList(_context.Departments, "Id", "Name");
             return View();
         }
 
@@ -41,16 +41,16 @@ namespace OfficeAuto.Controllers
         {
             if (ModelState.IsValid)
             {
-                var role = new ApplicationRole();
-                role.Name=roleViewModel.Name;
-                role.DeptId = roleViewModel.DeptId;
-                IdentityResult roleresult;
-                roleresult = await _roleManager.CreateAsync(role);
-                if (!roleresult.Succeeded)
-                {
-                    //ModelState.AddModelError("", roleresult.Errors.First());
-                    return View();
-                }
+                //var role = new ApplicationRole();
+                //role.Name=roleViewModel.Name;
+                //role.DeptId = roleViewModel.DeptId;
+                //IdentityResult roleresult;
+                //roleresult = await _roleManager.CreateAsync(role);
+                //if (!roleresult.Succeeded)
+                //{
+                //    //ModelState.AddModelError("", roleresult.Errors.First());
+                //    return View();
+                //}
                 return RedirectToAction("Index");
             }
             return View();
@@ -58,19 +58,20 @@ namespace OfficeAuto.Controllers
 
         public async Task<IActionResult> Edit(string id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var role = await _roleManager.FindByIdAsync(id);
-            if (role == null)
-            {
-                return NotFound();
-            }
-            RoleViewModel roleModel = new RoleViewModel { Id = role.Id, Name = role.Name };
-            roleModel.DeptId = role.DeptId;
-            ViewData["Departments"] = new SelectList(_context.Departments, "Id", "Name");
-            return View(roleModel);
+            //if (id == null)
+            //{
+            //    return NotFound();
+            //}
+            //var role = await _roleManager.FindByIdAsync(id);
+            //if (role == null)
+            //{
+            //    return NotFound();
+            //}
+            //RoleViewModel roleModel = new RoleViewModel { Id = role.Id, Name = role.Name };
+            //roleModel.DeptId = role.DeptId;
+            //ViewData["Departments"] = new SelectList(_context.Departments, "Id", "Name");
+            //roleModel
+            return View();
         }
 
         [HttpPost]
@@ -79,13 +80,13 @@ namespace OfficeAuto.Controllers
         {
             if (ModelState.IsValid)
             {
-                var role = await _roleManager.FindByIdAsync(roleModel.Id);
-                role.Name = roleModel.Name;
-                role.DeptId = roleModel.DeptId;
-                await _roleManager.UpdateAsync(role);
+                //var role = await _roleManager.FindByIdAsync(roleModel.Id);
+                //role.Name = roleModel.Name;
+                //role.DeptId = roleModel.DeptId;
+                //await _roleManager.UpdateAsync(role);
                 return RedirectToAction("Index");
             }
-            ViewData["Departments"] = new SelectList(_context.Departments, "Id", "Name");
+            //ViewData["Departments"] = new SelectList(_context.Departments, "Id", "Name");
             return View();
         }
 

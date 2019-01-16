@@ -1,0 +1,99 @@
+﻿@{
+    ViewData["Title"] = "Timeline";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item">
+        <a href="#">Case Files</a>
+    </li>
+    <li class="breadcrumb-item active">Inbox</li>
+
+
+</ol>
+<div class="container-fluid">
+
+    <div class="animated fadeIn">
+        <div class="card">
+            <div class="card-header">
+                <h3>History</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        
+                        <ul class="timeline">
+                            <li>
+                                <a target="_blank" href="#">Mintue 1</a>
+                                <a href="#" class="float-right">12/18/2018</a>
+                                <p>Created by: <a href="#">Manager IT, John Doe</a></p>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer ....</p>
+                            </li>
+                            <li>
+                                <a target="_blank" href="#">Mintue 2</a>
+                                <a href="#" class="float-right">12/18/2018</a>
+                                <p>Created by: <a href="#">Manager IT, John Doe</a></p>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer ....</p>
+                            </li>
+                            <li>
+                                <a target="_blank" href="#">Mintue 3</a>
+                                <a href="#" class="float-right">12/18/2018</a>
+                                <p>Created by: <a href="#">Manager IT, John Doe</a></p>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer ....</p>
+                            </li>
+                            <li>
+                                <a target="_blank" href="#">Mintue 4</a>
+                                <a href="#" class="float-right">12/18/2018</a>
+                                <p>Created by: <a href="#">Manager IT, John Doe</a></p>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer ....</p>
+                            </li>
+                            <li>
+                                <a target="_blank" href="#">Mintue 5</a>
+                                <a href="#" class="float-right">12/18/2018</a>
+                                <p>Created by: <a href="#">Manager IT, John Doe</a></p>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer ....</p>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    ul.timeline {
+        list-style-type: none;
+        position: relative;
+    }
+
+        ul.timeline:before {
+            content: ' ';
+            background: #d4d9df;
+            display: inline-block;
+            position: absolute;
+            left: 29px;
+            width: 2px;
+            height: 100%;
+            z-index: 400;
+        }
+
+        ul.timeline > li {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+            ul.timeline > li:before {
+                content: ' ';
+                background: white;
+                display: inline-block;
+                position: absolute;
+                border-radius: 50%;
+                border: 3px solid #22c0e8;
+                left: 20px;
+                width: 20px;
+                height: 20px;
+                z-index: 400;
+            }
+</style>

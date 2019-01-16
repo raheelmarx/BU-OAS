@@ -32,13 +32,34 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Campuses\Create.cshtml" />
+    <None Include="Views\Campuses\Delete.cshtml" />
+    <None Include="Views\Campuses\Details.cshtml" />
+    <None Include="Views\Campuses\Edit.cshtml" />
+    <None Include="Views\Campuses\Index.cshtml" />
     <None Include="Views\Cases\Create.cshtml" />
     <None Include="Views\Cases\Delete.cshtml" />
     <None Include="Views\Cases\Details.cshtml" />
     <None Include="Views\Cases\Edit.cshtml" />
     <None Include="Views\Cases\FilesUpload.cshtml" />
     <None Include="Views\Cases\Index.cshtml" />
+    <None Include="Views\Cases\PartialFile.cshtml" />
     <None Include="Views\Cases\_PartialCKEditor.cshtml" />
+    <None Include="Views\Consultants\Create.cshtml" />
+    <None Include="Views\Consultants\Delete.cshtml" />
+    <None Include="Views\Consultants\Details.cshtml" />
+    <None Include="Views\Consultants\Edit.cshtml" />
+    <None Include="Views\Consultants\Index.cshtml" />
+    <None Include="Views\Contractors\Create.cshtml" />
+    <None Include="Views\Contractors\Delete.cshtml" />
+    <None Include="Views\Contractors\Details.cshtml" />
+    <None Include="Views\Contractors\Edit.cshtml" />
+    <None Include="Views\Contractors\Index.cshtml" />
+    <None Include="Views\Departments\Create.cshtml" />
+    <None Include="Views\Departments\Delete.cshtml" />
+    <None Include="Views\Departments\Details.cshtml" />
+    <None Include="Views\Departments\Edit.cshtml" />
+    <None Include="Views\Departments\Index.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Minutes\Create.cshtml" />
     <None Include="Views\Minutes\Delete.cshtml" />
@@ -49,13 +70,37 @@
     <None Include="Views\Minutes\ReferenceUpload.cshtml" />
     <None Include="Views\Minutes\_PartialCKEditor.cshtml" />
     <None Include="Views\Minutes\_PartialEditor.cshtml" />
+    <None Include="Views\Roles\Create.cshtml" />
+    <None Include="Views\Roles\Edit.cshtml" />
+    <None Include="Views\Roles\Index.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
+    <None Include="Views\Shared\_Aside.cshtml" />
     <None Include="Views\Shared\_CookieConsentPartial.cshtml" />
+    <None Include="Views\Shared\_Footer.cshtml" />
+    <None Include="Views\Shared\_Header.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\Shared\_LoginLayout.cshtml" />
     <None Include="Views\Shared\_LoginPartial.cshtml" />
+    <None Include="Views\Shared\_PartialCampusDeptRoles.cshtml" />
+    <None Include="Views\Shared\_Sidebar.cshtml" />
     <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Views\Users\AssignAOLAOD.cshtml" />
+    <None Include="Views\Users\Edit.cshtml" />
+    <None Include="Views\Users\Index.cshtml" />
     <None Include="Views\_ViewImports.cshtml" />
     <None Include="Views\_ViewStart.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\MockUps\CreateMinute.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\MockUps\PartialFile.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\MockUps\_PartialCKEditor.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
   </ItemGroup>
 
 </Project>

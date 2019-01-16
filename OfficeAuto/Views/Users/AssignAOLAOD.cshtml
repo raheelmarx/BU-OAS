@@ -3,23 +3,11 @@
 <ol class="breadcrumb">
     <li class="breadcrumb-item">Home</li>
     <li class="breadcrumb-item">
-        <a href="#">Admin</a>
+        <a asp-action="Index">Users</a>
     </li>
-    <li class="breadcrumb-item active">Dashboard</li>
+    <li class="breadcrumb-item active">Assign AOL AOD</li>
 
-    <li class="breadcrumb-menu d-md-down-none">
-        <div class="btn-group" role="group" aria-label="Button group">
-            <a class="btn" href="#">
-                <i class="icon-speech"></i>
-            </a>
-            <a class="btn" href="#">
-                <i class="icon-graph"></i> &nbsp;Dashboard
-            </a>
-            <a class="btn" href="#">
-                <i class="icon-settings"></i> &nbsp;Settings
-            </a>
-        </div>
-    </li>
+    
 </ol>
 <div class="container-fluid">
 
@@ -34,36 +22,67 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-12">
-                        <form asp-action="AssignAOLAOD">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <input type="hidden" asp-for="UserId" />
+                        <form action="" method="post">
+
+                            <input type="hidden" id="UserId" name="UserId" value="">
                             <div class="form-group">
-                                <label asp-for="Type" class="control-label"></label>
-                                <input asp-for="Type" class="form-control" />
-                                <span asp-validation-for="Type" class="text-danger"></span>
+                                <label class="control-label" for="Type">Type</label>
+                                <input class="form-control" type="text" id="Type" name="Type" value="">
+                                <span class="text-danger field-validation-valid" data-valmsg-for="Type" data-valmsg-replace="true"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="AOUserId" class="control-label"></label>
-                                <select asp-for="AOUserId" class="form-control" asp-items="ViewBag.Users">
+                                <label class="control-label" for="AOUserId">Users</label>
+                                <select class="form-control" data-val="true" data-val-required="The Users field is required." id="AOUserId" name="AOUserId">
                                     <option value="">Select Value</option>
                                 </select>
-                                <span asp-validation-for="AOUserId" class="text-danger"></span>
+                                <span class="text-danger field-validation-valid" data-valmsg-for="AOUserId" data-valmsg-replace="true"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="DateAssigned" class="control-label"></label>
-                                <input asp-for="DateAssigned" class="form-control" />
-                                <span asp-validation-for="DateAssigned" class="text-danger"></span>
+                                <label class="control-label" for="DateAssigned">DateAssigned</label>
+                                <input class="form-control" type="date" data-val="true" data-val-required="The DateAssigned field is required." id="DateAssigned" name="DateAssigned" value="">
+                                <span class="text-danger field-validation-valid" data-valmsg-for="DateAssigned" data-valmsg-replace="true"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="DateExpired" class="control-label"></label>
-                                <input asp-for="DateExpired" class="form-control" />
-                                <span asp-validation-for="DateExpired" class="text-danger"></span>
+                                <label class="control-label" for="DateExpired">DateExpired</label>
+                                <input class="form-control" type="date" data-val="true" data-val-required="The DateExpired field is required." id="DateExpired" name="DateExpired" value="">
+                                <span class="text-danger field-validation-valid" data-valmsg-for="DateExpired" data-valmsg-replace="true"></span>
                             </div>
-                           
+
                             <div class="form-group">
-                                <input type="submit" value="Save" class="btn btn-default" />
+                                <input type="submit" value="Save" class="btn btn-default">
                             </div>
+                            
                         </form>
+                        @*<form asp-action="AssignAOLAOD">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="UserId" />
+            <div class="form-group">
+                <label asp-for="Type" class="control-label"></label>
+                <input asp-for="Type" class="form-control" />
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AOUserId" class="control-label"></label>
+                <select asp-for="AOUserId" class="form-control" asp-items="ViewBag.Users">
+                    <option value="">Select Value</option>
+                </select>
+                <span asp-validation-for="AOUserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateAssigned" class="control-label"></label>
+                <input asp-for="DateAssigned" class="form-control" />
+                <span asp-validation-for="DateAssigned" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateExpired" class="control-label"></label>
+                <input asp-for="DateExpired" class="form-control" />
+                <span asp-validation-for="DateExpired" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>*@
 
                     </div>
                 </div>
