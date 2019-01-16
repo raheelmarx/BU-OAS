@@ -8,25 +8,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <ol class="breadcrumb">
-    <li class="breadcrumb-item">Home</li>
     <li class="breadcrumb-item">
-        <a href="#">Admin</a>
+        <i class="fa fa-home" aria-hidden="true"></i>
+        <a asp-action="Index" asp-controller="Home">Home</a>
     </li>
-    <li class="breadcrumb-item active">Dashboard</li>
+    <li class="breadcrumb-item">
+        <a href="#">Case Files</a>
+    </li>
+    <li class="breadcrumb-item active">Create Mintue</li>
 
-    <li class="breadcrumb-menu d-md-down-none">
-        <div class="btn-group" role="group" aria-label="Button group">
-            <a class="btn" href="#">
-                <i class="icon-speech"></i>
-            </a>
-            <a class="btn" href="./">
-                <i class="icon-graph"></i> &nbsp;Dashboard
-            </a>
-            <a class="btn" href="#">
-                <i class="icon-settings"></i> &nbsp;Settings
-            </a>
-        </div>
-    </li>
+    
 </ol>
 <div class="container-fluid">
 
@@ -34,6 +25,9 @@
         <div class="card">
             <div class="card-header">
                 Add new Minute
+                <div class="card-header-actions">
+                    <a asp-action="Index" asp-controller="Home" class="btn btn-sm btn-success">Back to Home</a>
+                </div>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -98,8 +92,8 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-1"></div>
-                                    <div class="col-md-4"> <label asp-for="MinuteTitle" class="control-label" style="align-items:center;font-weight:bold; text-decoration:underline;">Director Finance</label></div>
+                                    
+                                    <div class="col-md-5"> <label asp-for="MinuteTitle" class="control-label" style="align-items:center;font-weight:bold; text-decoration:underline;"><strike>Director Finance</strike></label></div>
                                     <div class="col-md-3"></div>
                                     <div class="col-md-4"> <label asp-for="MinuteTitle" class="control-label" style="align-items:center;font-weight:bold;"><span style="align-items:center; text-decoration:underline;">Rizwan Aamir</span><br />Director (IT)<br />1/1/2019 10:15 AM</label></div>
 
@@ -127,8 +121,8 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-1"></div>
-                                    <div class="col-md-4"> <label asp-for="MinuteTitle" class="control-label" style="align-items:center;font-weight:bold; text-decoration:underline;">Director Planning & Development</label></div>
+                                  
+                                    <div class="col-md-5"> <label asp-for="MinuteTitle" class="control-label" style="align-items:center;font-weight:bold; text-decoration:underline;"><strike>Director Planning & Development</strike></label></div>
                                     <div class="col-md-3"></div>
                                     <div class="col-md-4"> <label asp-for="MinuteTitle" class="control-label" style="align-items:center;font-weight:bold;"><span style="align-items:center; text-decoration:underline;">Cdre Muhammad Aslam Khan</span><br />Director Finance<br />1/2/2019 11:30 AM</label></div>
 
